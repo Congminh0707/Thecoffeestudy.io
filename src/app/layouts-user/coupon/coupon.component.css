@@ -1,0 +1,44 @@
+img{
+    margin-top: 10px;
+    width: 217.5px;
+    height: 217.5px;  
+}
+.time-end{
+    font-style: italic;
+    font-size: 13px;
+    width: 255px;
+    position: absolute;
+    bottom: 0px;
+}
+.description{
+    font-size: 14px;
+
+}
+.rewards{
+    font-weight: 400;
+    color: black;
+    width: 212px;
+    font-size: 20px;
+    margin-left: 5px;
+}
+.shadow{
+    box-shadow: 5px 5px 5px yellow;
+    margin-top: 10px;
+    padding-left: 7.5px;
+    padding-right: 0px;
+    margin-bottom: 10px;
+    width: 300px;
+    margin-right: 70px;
+    padding: 0%;
+    height: 400px;
+}
+.class-container{
+    border-radius: 10px rgb(0, 0, 0);
+    background-color: #fff;
+}
+body{
+    background-color: #f5f5f5;
+}
+p{
+    margin-left: 5px;
+}

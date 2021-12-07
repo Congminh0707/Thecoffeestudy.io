@@ -1,0 +1,19 @@
+<div class="container class-container">
+    <div class="row col-md-12">
+        <h3>Khuyến mãi của bạn</h3>
+    </div>
+    <div class="row col-md-12">
+        <div class="row col-md-2">
+
+        </div>
+        <div class="row col-md-10">
+            <div *ngFor="let c of coupon" class="col-md-3 shadow">
+                <img src="/assets/images/MACCHIATO.jpg">
+                <div class="rewards">{{c.name}}</div>
+                <p class="description">{{c.description}}</p>
+                <p class="time-end">Hết hạn {{c.expiration_date}}</p>
+            </div>
+        </div>
+
+    </div>
+</div>

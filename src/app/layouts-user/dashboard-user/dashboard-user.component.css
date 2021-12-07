@@ -1,0 +1,199 @@
+@media screen and (max-width: 2000px) {
+    img {
+        margin-top: 10px;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .margin-product {
+        margin-right: 70px;
+        padding: 0%;
+
+    }
+
+    .shadow {
+        box-shadow: 5px 5px 5px yellow;
+        margin-top: 10px;
+        padding-left: 7.5px;
+        padding-right: 0px;
+        margin-bottom: 10px;
+        width: 300px;
+        margin-right: 70px;
+        padding: 0%;
+        height: 350px;
+    }
+
+    #btnmuangay {
+        border: solid 2px;
+        border-color: darkred;
+        background-color: darkred;
+        color: white;
+        padding: 0;
+        width: 80px;
+        font-size: 10px;
+        height: 40px;
+        text-align: center;
+        padding: 0;
+    }
+
+    #btnAddToCart {
+        border: solid 2px;
+        border-color: darkred;
+        background-color: #bd1e1ecf;
+        padding: 0;
+        width: 80px;
+        font-size: 10px;
+        height: 40px;
+        text-align: center;
+        padding: 0;
+        position: absolute;
+        right: 0%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    img {
+        border-radius: 10px;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .margin-product {
+        margin-right: 70px;
+        padding: 0%;
+    }
+
+    .shadow {
+        box-shadow: 5px 5px 5px yellow;
+        margin-top: 10px;
+        padding-left: 7.5px;
+        padding-right: 0px;
+        margin-bottom: 10px;
+        width: 300px;
+        margin-right: 70px;
+        padding: 0%;
+        height: 350px;
+    }
+
+    #btnmuangay {
+        border: solid 2px;
+        border-color: darkred;
+        background-color: darkred;
+        color: white;
+        width: 70px;
+        font-size: 10px;
+        height: 40px;
+        text-align: center;
+        padding: 0;
+    }
+
+    #btnAddToCart {
+        border: solid 2px;
+        border-color: darkred;
+        background-color: #bd1e1ecf;
+        width: 70px;
+        font-size: 10px;
+        height: 40px;
+        text-align: center;
+        padding: 0;
+        position: absolute;
+        right: 0%;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    img {
+        border-radius: 10px;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .margin-product {
+        margin-right: 50px;
+        padding: 0%;
+    }
+
+    .shadow {
+        box-shadow: 5px 5px 5px yellow;
+        margin-top: 10px;
+        padding-left: 7.5px;
+        padding-right: 0px;
+        margin-bottom: 10px;
+        width: 300px;
+        margin-right: 70px;
+        padding: 0%;
+        height: 470px;
+    }
+
+    #btnmuangay {
+        border: solid 2px;
+        border-color: darkred;
+        background-color: darkred;
+        color: white;
+        width: 100px;
+        font-size: 10px;
+        height: 40px;
+        text-align: center;
+        padding: 0;
+    }
+
+    #btnAddToCart {
+        border: solid 2px;
+        border-color: darkred;
+        background-color: #bd1e1ecf;
+        width: 100px;
+        font-size: 10px;
+        height: 40px;
+        text-align: center;
+        padding: 0;
+        position: absolute;
+        right: 0%;
+    }
+}
+
+#btnmuangay:hover {
+    background-color: rgb(172, 40, 0);
+    color: white;
+}
+
+#btnAddToCart:hover {
+    background-color: darkred;
+    color: white;
+}
+
+
+.pading {
+    padding-top: 100px;
+}
+
+.margin {
+    margin-top: 100px;
+}
+
+.float {
+    clear: none;
+}
+
+p {
+    padding: 0;
+}
+
+.class-container {
+    border-radius: 10px rgb(0, 0, 0);
+    background-color: #fff;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+h3{
+    font-weight: 800;
+    text-shadow: black;
+}
+
+.see-more{
+    
+}
+
+

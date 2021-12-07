@@ -1,0 +1,267 @@
+@media screen and (max-width: 2000px) {
+    #btnmuangay{
+        background-color: darkred;
+        color: white;
+        margin-left: 100px;
+        height: 40px;
+        width: 100px;
+        padding: 0;
+        text-align: center;
+    }
+    .name{
+        font-weight: 600;
+        color: #000;
+        margin-left: 10px;
+    }
+    .price{
+        position: absolute;
+        bottom: 5%;
+        margin-left: 10px;
+    
+    }
+    img{
+        margin: 10px;
+        border-radius: 10px;
+        border: none;
+        max-width: 90%;
+        height: auto;
+    }
+    .shadow{
+        box-shadow: 5px 5px 5px yellow;
+        border-radius: 10px;
+        margin-top: 10px;
+        padding-left: 7.5px;
+        padding-right: 0px;
+        margin-bottom: 10px;
+        width: 200px;
+        margin-right: 50px;
+        padding: 0%;
+        height: 320px;
+    }
+}
+@media screen and (max-width: 1280px) {
+    #btnmuangay{
+        background-color: darkred;
+        color: white;
+        margin-left: 100px;
+        height: 40px;
+        width: 100px;
+        padding: 0;
+        text-align: center;
+    }
+    .name{
+        font-weight: 600;
+        color: #000;
+        margin-left: 10px;
+    }
+    .price{
+        position: absolute;
+        bottom: 5%;
+        margin-left: 10px;
+    
+    }
+    img{
+        margin: 10px;
+        border-radius: 10px;
+        border: none;
+        max-width: 90%;
+        height: auto;
+    }
+    .shadow{
+        box-shadow: 5px 5px 5px yellow;
+        border-radius: 10px;
+        margin-top: 10px;
+        padding-left: 7.5px;
+        padding-right: 0px;
+        margin-bottom: 10px;
+        max-width: 100%;
+        margin-right: 50px;
+        padding: 0%;
+        height: 320px;
+    }
+}
+@media screen and (max-width: 800px) {
+    #btnmuangay{
+        background-color: darkred;
+        color: white;
+        margin-left: 100px;
+        height: 40px;
+        width: 100px;
+        padding: 0;
+        text-align: center;
+        position: absolute;
+    }
+    .name{
+        font-weight: 600;
+        color: #000;
+        margin-left: 10px;
+    }
+    .price{
+        position: absolute;
+        bottom: 5%;
+        margin-left: 10px;
+    
+    }
+    img{
+        margin: 10px;
+        border-radius: 10px;
+        border: none;
+        max-width: 90%;
+        height: auto;
+    }
+    .shadow{
+        box-shadow: 5px 5px 5px yellow;
+        border-radius: 10px;
+        margin-top: 10px;
+        padding-left: 7.5px;
+        padding-right: 0px;
+        margin-bottom: 10px;
+        max-width: 100%;
+        /* margin-right: 50px; */
+        padding: 0%;
+        height: 320px;
+    }
+}
+
+
+
+
+#btnmuangay:hover{
+    background-color: yellowgreen;
+    color: white;
+}
+
+
+
+
+.h{
+    height: 50px;
+    width: 100px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+#ttimg{
+    /* margin-left: 50px; */
+}
+#btnmuangay{
+    background-color: darkred;
+    color: white;
+}
+#btnmuangay:hover{
+    background-color: yellowgreen;
+    color: white;
+}
+#comment{
+    text-align: center;
+    margin-top: 100px;
+}
+#list{
+    margin-top: 50px;
+    padding-left: 50px;
+}
+.bg{
+    background-color: mintcream;
+}
+.margin{
+    margin-top: 100px;
+}
+img{
+    border-radius: 10px;
+    border: none;
+    max-width: 100%;
+    height: 290px;
+    width: 290px;
+}
+.img{
+    border-radius: 10px;
+    border: none;
+    max-width: 100%;
+    height: 290px;
+    width: 290px;
+    margin-left: 100px;
+    margin-top: 17px;
+}

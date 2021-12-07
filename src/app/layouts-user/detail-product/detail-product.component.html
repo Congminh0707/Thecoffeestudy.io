@@ -1,0 +1,45 @@
+<div class="margin">
+    <div class="bg">
+        <div class="row col-md-12" *ngFor="let detail of productDetail">
+            <div class="col-md-2"></div>
+            <div class="col-md-4" id="img">
+                <!-- <img class="img" src="http://thecoffeestudy.xyz:1337{{detail.image[0].url}}" /> -->
+                <img class="img" [src]="detail.image.url" />
+            </div>
+            <div class="col-md-4" id="ttimg">
+                <h3><strong>{{detail.name}}</strong></h3>
+                <P>{{detail.description}}
+                </P>
+                <p>{{detail.price}} đ</p>
+                <p><button class="btn btn-default" id="btnmuangay">MUA NGAY</button></p>
+                <p>Gọi hàng giao tận nơi 18001090</p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <div id="comment">
+        <h3><strong> VỊ TRẦM LẮNG HẢO HẠNG </strong></h3>
+        <P>Cà phê đen bao giờ cũng kén người thưởng thức</P>
+        <div>Không ngọt ngào như bạc xỉu hay cà phê sữa. Cà phê đen mang trong mình
+            phong vị trầm lắng thi vị hơn.
+        </div>
+    </div>
+
+    <div class="bg">
+        <h3 id="comment"> <strong>BẠN CÓ THỂ THÍCH </strong></h3>
+        <div class="row col-md-12" id="list">
+            <div class="col-md-1"></div>
+            <div class="row col-md-10">
+                <div class="col-md-3" *ngFor="let p of productRandom">
+                    <img [src]="p.image.url" height="300"
+                        [routerLink]="['/products-detail',p._id]">
+                    <p><b>{{p.name}}</b></p>
+                    <p><b>{{p.price}} đ</b></p>
+                    <p><button class="btn btn-default" id="btnmuangay">MUA NGAY</button></p>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

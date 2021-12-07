@@ -1,0 +1,51 @@
+.text-center {
+    margin-top: 50px;
+}
+
+#actions .btn {
+    width: 36%;
+    margin: 1.5em 0;
+}
+
+.name {
+    font-weight: 500;
+}
+
+.line {
+    width: 1050px;
+    height: 0.05px;
+    background-color: rgb(143, 143, 143);
+}
+
+#actions .btn-info {
+    float: left;
+}
+
+#actions .btn-danger {
+    float: right;
+}
+
+.btn.btn-warning {
+    background-color: darkred;
+    color: white;
+}
+
+.btn.btn-warning:hover {
+    background-color: yellowgreen;
+    color: white;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+#margin {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: darkred;
+}
+
+.qty {
+    width: 100px;
+    display: inline;
+}

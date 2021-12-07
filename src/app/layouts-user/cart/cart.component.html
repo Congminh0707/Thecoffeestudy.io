@@ -1,0 +1,73 @@
+<form>
+    <h2 class="text-center">Thanh Toán</h2>
+
+    <div class="container">
+        <div class="row col-md-12" id="margin">
+
+            <div class="col-md-2">
+                <h5>Tên sản phẩm</h5>
+            </div>
+
+            <div class="col-md-2"></div>
+
+            <div class="col-md-2">
+                <h5>Đơn giá</h5>
+            </div>
+
+            <div class="col-md-2">
+                <h5>Số lượng</h5>
+            </div>
+
+            <div class="col-md-2">
+                <h5>Thành tiền</h5>
+            </div>
+
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row col-md-12" id="margin" *ngFor="let p of CartItem">
+            <div class="col-md-2">
+                <!-- <img src="http://thecoffeestudy.xyz:1337{{p.image[0].url}}" height="100"> -->
+                <!-- <img src="http://localhost:1337{{p.image[0].url}}" height="100"> -->
+                <img [src]="p.image.url" height="100">
+            </div>
+
+            <div class="col-md-2 name">
+                <p>{{p.name}}</p>
+            </div>
+
+            <div class="col-md-2">
+                <p>{{p.price}} đ</p>
+            </div>
+
+            <div class="col-md-2"><input class="qty" id="{{p._id}}" type="number" (click)="upDate(p._id, p.price)"
+                    value="{{p.qty}}" min="1" /></div>
+
+            <div class="col-md-2">
+                <p id="total.{{p._id}}">{{p.totalMoney}} đ</p>
+            </div>
+
+            <div class="col-md-2" id="actions">
+                <button (click)="removeItem(p.id)" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+            </div>
+            <hr class="line">
+        </div>
+        <div class="row col-md-12" id="margin">
+
+            <div class="col-md-2">
+                <button class="btn btn-warning" routerLink="/home"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</button>
+            </div>
+
+            <div class="col-md-2"></div>
+
+            <div class="col-md-2"></div>
+
+            <div class="col-md-2">Tổng tiền:</div>
+
+            <div class="col-md-2"><strong id="totalMoneyCart">{{totalMoneyCart}} đ</strong></div>
+
+            <div class="col-md-2">
+                <button routerLink="/Pay" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,153 @@
+<div class="backgroud">
+    <div class="row col-md-12">
+        <h4><i class="fa fa-clipboard"></i>Xác Nhận Đơn Hàng</h4>
+    </div>
+    <div class="row col-md-12">
+        <div class="row col-md-1"></div>
+        <div class="row col-md-7 form-info">
+            <div class="col-md-6">
+                <form [formGroup]="formInfo" class="login-container box">
+                    <h3>Thông tin giao hàng</h3>
+                    <input #usernameInput type="text" placeholder="Họ Tên" formControlName="username">
+                    <input #usernameInput type="text" placeholder="Số điện thoại" formControlName="phoneNumber">
+                    <input #usernameInput type="text" placeholder="Địa chỉ" formControlName="adress">
+                    <input #usernameInput type="text" placeholder="Ghi Chú" formControlName="note">
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3>Phương thức thanh toán</h3>
+                <form [formGroup]="formPay">
+                    <ul>
+                        <li>
+                            <input type="radio" id="cash" name="Pay" value="cash" formControlName="Pay">
+                              <label for="cash" style="padding-left: 6px;">
+                                <span>
+                                    <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/1000_photo_2021-04-06_11-17-08.jpg"
+                                        alt="">
+                                </span>
+                                <span class="text">Tiền mặt</span>
+                            </label>
+                            <br>
+                        </li>
+                        <li><input type="radio" id="MoMo" name="Pay" value="MoMo" formControlName="Pay">
+                              <label for="MoMo" style="padding-left: 6px;">
+                                <span>
+                                    <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/386_ic_momo@3x.png"
+                                        alt="">
+                                </span>
+                                <span class="text">MoMo</span>
+                            </label>
+                            <br><br>
+                        </li>
+                        <li><input type="radio" id="ZaloPay" name="Pay" value="ZaloPay" formControlName="Pay">
+                              <label for="ZaloPay" style="padding-left: 6px;">
+                                <span>
+                                    <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/388_ic_zalo@3x.png"
+                                        alt="">
+                                </span>
+                                <span class="text">ZaloPay</span>
+                            </label></li>
+                        <li><input type="radio" id="BankCard" name="Pay" value="BankCard" formControlName="Pay">
+                              <label for="BankCard" style="padding-left: 6px;">
+                                <span>
+                                    <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/385_ic_atm@3x.png"
+                                        alt="">
+                                </span>
+                                <span class="text">Thẻ ngân hàng</span>
+                            </label></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="row col-md-4 form-Credit-Card">
+            <div class="row col-md-12 header-form-Credit-Card">
+                <div class="col-md-8 padding-top-15">
+                    <h4>Các món đã chọn</h4>
+                </div>
+                <div class="col-md-4 padding-top-15">
+                    <button class="btn-add" routerLink="/home">Thêm món</button>
+                </div>
+            </div>
+            <hr width="100px" align='left'
+                style="background-color: rgb(255, 91, 91); height: 2px; margin-top: 0; margin-left: 15px;">
+            <div class="row col-md-12 cart" id="margin" *ngFor="let p of CartItem">
+                <div class="col-md-2">
+                    <!-- <img src="http://thecoffeestudy.xyz:1337{{p.image[0].url}}" height="100"> -->
+                    <img class="img-p" [src]="p.image.url">
+                </div>
+
+                <div class="col-md-2 name">
+                    <p>{{p.name}}</p>
+                </div>
+
+                <div class="col-md-2 price">
+                    <p>{{p.price}} đ</p>
+                </div>
+
+                <div class="col-md-2 qty"><input class="qty-i" id="{{p._id}}" type="number"
+                        (click)="upDate(p._id, p.price)" value="{{p.qty}}" min="1" /></div>
+
+                <div class="col-md-2 totalMoney">
+                    <p id="total.{{p._id}}">{{p.totalMoney}} đ</p>
+                </div>
+
+                <div class="col-md-2" id="actions">
+                    <button (click)="removeItem(p.id)" class="btn btn-danger btn-sm"><i
+                            class="fa fa-trash-o"></i></button>
+                </div>
+            </div>
+            <div class="col-md-12" style="font-weight: 700;">
+                <h4>Tổng Cộng</h4>
+                <hr width="100px" align='left' style="background-color: rgb(255, 91, 91); height: 2px; margin-top: 0;">
+            </div>
+            <div class="row col-md-12 total">
+                <button class=" btn-primary btn-total" disabled>Thành tiền:</button>
+                <div class="totalMoneyCart"><strong id="totalMoneyCart">{{totalMoneyCart}} đ</strong></div>
+            </div>
+            <hr class="line">
+            <div class="row col-md-12" *ngIf="transportFee!=0">
+                <button class=" btn-primary btn-total" disabled>Phí vận chuyển:</button>
+                <div class="totalMoneyCart"><strong id="totalMoneyCart">{{transportFee}} đ</strong></div>
+            </div>
+            <hr *ngIf="transportFee!=0" class="line">
+            <div class="row col-md-12 promotion">
+                <input (click)="openModal('modal-rewards')" class="btn-reward" type="button" value="Khuyến mãi">
+                <div class="row col-md-12 coupon-use" *ngIf="couponUse">
+                    <div class="col-md-6 coupon-name">{{couponUse.name}}</div>
+                    <div *ngIf="moneyDiscountRate > 0" class="col-md-6 coupon-money"><strong id="coupon-money">- {{moneyDiscountRate}} đ</strong></div>
+                </div>
+                <input *ngIf="isCoupon && couponUse"
+                    type="button" class="btn-del-coupon" value="Xóa">
+                <div *ngIf="!isMinimum_order_value" class="row col-md-12 error">
+                    <p>Hóa đơn từ {{couponUse.minimum_condition}} đ trở lên</p>
+                </div>
+                <div *ngIf="!isMinimum_number_of_drinks" class="row col-md-12 error">
+                    <p>Hóa đơn từ {{couponUse.minimum_condition}} món trở lên</p>
+                </div>
+            </div>
+            <div class="row col-md-12 totalfinal">
+                <div class="col-md-6" style="padding-left: 0;">
+                    <button class=" btn-primary btn-total-final" disabled>Thành tiền:
+                        <p id="totalFinal-p">{{totalMoneyCart}}</p>
+                    </button>
+                </div>
+                <div class="col-md-6 check-out">
+                    <button (click)="checkOut()" class="btn btn-default btn-check-out">Đặt hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<jw-modal id="modal-rewards">
+    <h3>Khuyến Mãi <button type="button" class="close" (click)="closeModal('modal-rewards');">&times;</button></h3>
+    <div class="row">
+        <div *ngFor="let c of coupon" class="row col-md-12 shadow">
+            <img class="col-md-2 img-rewards" src="/assets/images/MACCHIATO.jpg">
+            <div class="col-md-3 rewards">{{c.name}}</div>
+            <p class="col-md-3 description">{{c.description}}</p>
+            <p class="col-md-3 time-end">Hết hạn {{c.expiration_date}}
+                <input (click)="useCoupon(c.id)" class="btn-use" type="button" value="Sử dụng ngay">
+            </p>
+        </div>
+    </div>
+</jw-modal>

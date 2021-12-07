@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:  rgb(182, 55, 17);">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a routerLink="/coffee" style="margin-right: 50px;">
+        <img src="/assets/images/logo.png" width="200" height="100">
+    </a>
+
+
+    <!-- [routerLink]="['/signup']" -->
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <button class="custom-btn btn-8" routerLink="/home"><span>Trang Chủ</span></button>
+            </li>
+            <li class="nav-item active dropdown">
+                <button class="custom-btn btn-8" routerLink="/Menu"><span>Menu</span></button>
+            </li>
+            <li class="nav-item active dropdown">
+                <button class="custom-btn btn-8" routerLink="/study"><span>Học Tập</span></button>
+            </li>
+            <li class="nav-item active">
+                <button class="custom-btn btn-8" routerLink="/coupon"><span>Khuyến Mãi</span></button>
+            </li>
+            <li class="nav-item active">
+                <button class="custom-btn btn-8" routerLink="/Blog"><span>Blog</span></button>
+            </li>
+            <li class="nav-item active">
+                <button class="custom-btn btn-8" routerLink="/coffee"><span>Cửa Hàng</span></button>
+            </li>
+            <li class="nav-item active">
+                <button [hidden]="roles != 'Admin' " class="custom-btn btn-8" routerLink="/admin"><span>Admin</span></button>
+            </li>
+        </ul>
+        <form [hidden]="roles == 'Admin' " class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2 search" type="search" placeholder="Search" aria-label="Search">
+            <button class="custom-btn btn-8" type="submit">Search</button>
+        </form>
+        <div>
+            <i routerLink="/cart" class="fa fa-cart-plus icon fa-2x"></i>
+            <span [hidden]="!qty" class="qty">{{qty}}</span>
+        </div>
+    </div>
+</nav>
+<div class="dk"></div>
+
+
+
+
+<!-- <div class="header">
+    <div class=" row col-md-12 ">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <div class="btn1">
+            <button class="btn btn-default b color" routerLink="/coffee">Trang Chủ</button>
+            <div class="dropdown">
+                <button class="btn btn-default b color" >  Menu </button>
+                <div class="dropdown-content">
+                  <a href="#">Cà Phê</a>
+                  <a href="#">Trà & Macchiato</a>
+                  <a href="#">Thức Uống Đá Xay</a>
+                  <a href="#">Thức Uống Trái Cây</a>
+                  <a href="#">Bánh & Snack</a>
+                </div>
+            </div> 
+            <div class="dropdown">
+                <button class="btn btn-default b color" routerLink="/study">Học Tập</button>
+                <div class="dropdown-content">
+                  <a routerLink="/signupclassschedule">Đăng Ký Lịch Học</a>
+                  <a routerLink="/schedule">Lịch Học</a>
+                  <a routerLink="/Transcript">Bảng Điểm</a>
+                  <a routerLink="/TestQuizzes">Tests & Quizzes</a>
+                </div>
+            </div>
+            <img src="/assets/images/logo.png" width="120" height="60">
+            <button class="btn btn-default b color" routerLink="/Blog">Blog</button>
+            <button class="btn btn-default b color" >Đánh Giá</button>
+            <button class="btn btn-default b color" style="margin-right: 100px;" >Giới Thiệu</button>
+            <input class="border" type="text" placeholder="   Search..." name="search2" style="width: 270px; margin-right: 20px;">
+            <button class="border" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="dk"></div> -->
