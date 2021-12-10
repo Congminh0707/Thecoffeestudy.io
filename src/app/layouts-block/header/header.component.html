@@ -3,11 +3,11 @@
             STUDY®</b></a>
     <a style="color: rgb(182, 55, 17); font-size: 20px;"><b>Mang Tiếng Anh Đến Gần Mọi Người</b></a>
     <form class="form-inline">
-        <div *ngIf="!username">
+        <div *ngIf="!username && fullname==null">
             <button class="raise button" type="submit" [routerLink]="['/signup']">Đăng Ký</button>
             <button class="raise button" type="submit" [routerLink]="['/login']">Đăng Nhập</button>
         </div>
-        <div *ngIf="fullname!='undefined'" class="dropdown">
+        <div *ngIf="fullname!='undefined' && fullname!=null" class="dropdown">
             <button class="username" type="submit">{{fullname}}</button>
             <div class="dropdown-content">
                 <button class="shadown" (click)="homeUser()">Trang cá nhân</button>

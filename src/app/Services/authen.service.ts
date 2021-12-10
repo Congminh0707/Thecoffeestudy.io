@@ -43,13 +43,18 @@ export class AuthenService {
     )
   }
 
-  updateUser(cart?, userId?, oder?){
+  updateUser(cart?: string, userId?: string, oder?: string, fullname?: string, adress?: string, phone?: string){
     return this.webService.put(`users/${userId}`,{
       'cart': cart,
       'oder': oder,
+      'address': adress,
+      'fullname': fullname,
+      'phone': phone
     });
   }
-
+  getInF(userId){
+    return this.webService.get(`users/${userId}`);
+  }
   getAccessToken() {
     return localStorage.getItem('x-access-token');
   }

@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
     private cartService: CartService
   ) { }
   product: Product[];
+  cartID;
   cart: [];
   CartItem =[];
   totalMoneyCart = 0;
@@ -43,6 +44,11 @@ export class CartComponent implements OnInit {
   }
   removeItem(id: string){
     this.cartService.removeItem(id);
+    let cartItem = JSON.parse(window.localStorage.getItem("Cart"));
+    this.cartID = window.localStorage.getItem('cartId');
+    this.cartService.updateCartApi(cartItem,this.cartID).subscribe(res =>{
+      // console.log(res)
+    });
     location.reload();
   }
   upDate(_id, price){
@@ -62,5 +68,10 @@ export class CartComponent implements OnInit {
     });
     (<HTMLInputElement>document.getElementById('totalMoneyCart')).innerHTML = this.totalMoneyCart.toString()+' đ';
     //location.reload();
+    let cartItem = JSON.parse(window.localStorage.getItem("Cart"));
+    this.cartID = window.localStorage.getItem('cartId');
+    this.cartService.updateCartApi(cartItem,this.cartID).subscribe(res =>{
+      // console.log(res)
+    });
   }
 }

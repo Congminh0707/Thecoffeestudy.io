@@ -8,10 +8,14 @@
             <div class="col-md-6">
                 <form [formGroup]="formInfo" class="login-container box">
                     <h3>Thông tin giao hàng</h3>
-                    <input #usernameInput type="text" placeholder="Họ Tên" formControlName="username">
-                    <input #usernameInput type="text" placeholder="Số điện thoại" formControlName="phoneNumber">
-                    <input #usernameInput type="text" placeholder="Địa chỉ" formControlName="adress">
-                    <input #usernameInput type="text" placeholder="Ghi Chú" formControlName="note">
+                    <input #usernameInput type="text" placeholder="Họ Tên" value="{{fullname}}"
+                        formControlName="username">
+                    <input #phoneInput type="text" placeholder="Số điện thoại" value="{{phone}}"
+                        formControlName="phoneNumber">
+                    <input #adressInput type="text" placeholder="Địa chỉ" value="{{address}}" formControlName="adress">
+                    <input #noteInput type="text" placeholder="Ghi Chú" formControlName="note">
+                    <input class="btn-save" type="button" value="Lưu thông tin"
+                        (click)="saveInf(usernameInput.value,phoneInput.value, adressInput.value)">
                 </form>
             </div>
             <div class="col-md-6">
@@ -19,7 +23,7 @@
                 <form [formGroup]="formPay">
                     <ul>
                         <li>
-                            <input type="radio" id="cash" name="Pay" value="cash" formControlName="Pay">
+                            <input #Pay type="radio" id="cash" name="Pay" value="cash" formControlName="Pay">
                               <label for="cash" style="padding-left: 6px;">
                                 <span>
                                     <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/1000_photo_2021-04-06_11-17-08.jpg"
@@ -29,7 +33,7 @@
                             </label>
                             <br>
                         </li>
-                        <li><input type="radio" id="MoMo" name="Pay" value="MoMo" formControlName="Pay">
+                        <li><input #Pay type="radio" id="MoMo" name="Pay" value="MoMo" formControlName="Pay">
                               <label for="MoMo" style="padding-left: 6px;">
                                 <span>
                                     <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/386_ic_momo@3x.png"
@@ -39,7 +43,7 @@
                             </label>
                             <br><br>
                         </li>
-                        <li><input type="radio" id="ZaloPay" name="Pay" value="ZaloPay" formControlName="Pay">
+                        <li><input #Pay type="radio" id="ZaloPay" name="Pay" value="ZaloPay" formControlName="Pay">
                               <label for="ZaloPay" style="padding-left: 6px;">
                                 <span>
                                     <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/388_ic_zalo@3x.png"
@@ -47,7 +51,7 @@
                                 </span>
                                 <span class="text">ZaloPay</span>
                             </label></li>
-                        <li><input type="radio" id="BankCard" name="Pay" value="BankCard" formControlName="Pay">
+                        <li><input #Pay type="radio" id="BankCard" name="Pay" value="BankCard" formControlName="Pay">
                               <label for="BankCard" style="padding-left: 6px;">
                                 <span>
                                     <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/385_ic_atm@3x.png"
@@ -114,10 +118,10 @@
                 <input (click)="openModal('modal-rewards')" class="btn-reward" type="button" value="Khuyến mãi">
                 <div class="row col-md-12 coupon-use" *ngIf="couponUse">
                     <div class="col-md-6 coupon-name">{{couponUse.name}}</div>
-                    <div *ngIf="moneyDiscountRate > 0" class="col-md-6 coupon-money"><strong id="coupon-money">- {{moneyDiscountRate}} đ</strong></div>
+                    <div *ngIf="moneyDiscountRate > 0" class="col-md-6 coupon-money"><strong id="coupon-money">-
+                            {{moneyDiscountRate}} đ</strong></div>
                 </div>
-                <input *ngIf="isCoupon && couponUse"
-                    type="button" class="btn-del-coupon" value="Xóa">
+                <input *ngIf="isCoupon && couponUse" type="button" class="btn-del-coupon" value="Xóa">
                 <div *ngIf="!isMinimum_order_value" class="row col-md-12 error">
                     <p>Hóa đơn từ {{couponUse.minimum_condition}} đ trở lên</p>
                 </div>
@@ -132,7 +136,7 @@
                     </button>
                 </div>
                 <div class="col-md-6 check-out">
-                    <button (click)="checkOut()" class="btn btn-default btn-check-out">Đặt hàng</button>
+                    <button (click)="openModal('modal-confirm')" (click)="inf(adressInput.value)" class="btn btn-default btn-check-out">Đặt hàng</button>
                 </div>
             </div>
         </div>
@@ -140,6 +144,11 @@
 </div>
 <jw-modal id="modal-rewards">
     <h3>Khuyến Mãi <button type="button" class="close" (click)="closeModal('modal-rewards');">&times;</button></h3>
+    <div class="span-coupon">
+        <span><input #couponInput type="text" placeholder="Nhập mã khuyến mãi" class="input-coupon"
+                id="input-coupon"><input type="button" value="Áp dụng" class="btn-coupon"
+                (click)="useCouponByCode(couponInput.value)"></span>
+    </div>
     <div class="row">
         <div *ngFor="let c of coupon" class="row col-md-12 shadow">
             <img class="col-md-2 img-rewards" src="/assets/images/MACCHIATO.jpg">
@@ -149,5 +158,17 @@
                 <input (click)="useCoupon(c.id)" class="btn-use" type="button" value="Sử dụng ngay">
             </p>
         </div>
+    </div>
+</jw-modal>
+<jw-modal id="modal-confirm">
+    <h5>Xác nhận thông tin đơn hàng <button type="button" class="close"
+            (click)="closeModal('modal-confirm');">&times;</button></h5>
+    <div class="address-tracking">
+        {{confirmAddress}}
+    </div>
+    <div class="confirm">
+        <input class="btn-confirm" (click)="checkOut(usernameInput.value, phoneInput.value, adressInput.value, noteInput.value, Pay.value)"  type="button" value="Xác nhận">
+        <hr style="display: block; border-top: 0;">
+        <input class="change-information" (click)="closeModal('modal-confirm')" type="button" value="Thay đổi thông tin">
     </div>
 </jw-modal>

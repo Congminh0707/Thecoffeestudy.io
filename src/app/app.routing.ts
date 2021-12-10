@@ -1,3 +1,4 @@
+import { TrackingComponent } from './layouts-user/tracking/tracking.component';
 import { OrdersComponent } from './layouts-staff/orders/orders.component';
 import { CouponComponent } from './layouts-user/coupon/coupon.component';
 import { RewardsComponent } from './layouts-user/rewards/rewards.component';
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent
+  },
+  {
+    path: 'tracking/:oderId',
+    component: TrackingComponent
   },
   //////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////

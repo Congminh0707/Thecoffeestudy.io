@@ -18,6 +18,7 @@ export class DashboardUserComponent implements OnInit {
     private router: Router
   ) { }
   categoryId;
+  cartId;
   category;
   product: Product[];
   
@@ -37,6 +38,11 @@ export class DashboardUserComponent implements OnInit {
   }
   addToCart(id: string){
     this.cartService.addToCart(id);
+    let cartItem = JSON.parse(window.localStorage.getItem("Cart"));
+    this.cartId = window.localStorage.getItem('cartId');
+    this.cartService.updateCartApi(cartItem,this.cartId).subscribe(res =>{
+      console.log(res)
+    });
   }
   // converProduct(data): Product[]{
   //   const result = []; 

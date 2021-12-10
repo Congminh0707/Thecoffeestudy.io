@@ -1,3 +1,4 @@
+import { Cart } from './../models/cart';
 import { WebRequestService } from './web-request.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -63,9 +64,25 @@ export class CartService {
       items
     })
   }
-  updateCartApi(item: [], cartId){
-    return this.WebRequestService.put(`carts/${cartId}`,{
+  updateCartApi(item: [], cartId) {
+    return this.WebRequestService.put(`carts/${cartId}`, {
       'items': item
     })
-  } 
+  }
+  checkOut(oderstatus: boolean, methodOfPayment: string, totalMoney: string, item: Cart[], userId: string, address: string, note: string, phone: string, fullname: string) {
+    return this.WebRequestService.post(`oders`, {
+      'oderstatus': oderstatus,
+      'methodofpayments': methodOfPayment,
+      'totalmoney': totalMoney,
+      'items': item,
+      'userid': userId,
+      'address': address,
+      'note': note,
+      'phone': phone,
+      'fullname': fullname
+    })
+  }
+  getOder(oderId){
+    return this.WebRequestService.get(`oders/${oderId}`);
+  }
 }

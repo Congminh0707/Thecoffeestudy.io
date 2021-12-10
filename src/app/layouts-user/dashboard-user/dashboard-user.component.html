@@ -26,8 +26,9 @@
                                     [routerLink]="['/products-detail',p._id]">
                                 <p><b>{{p.name}} </b></p>
                                 <p><b>{{p.price}}đ</b></p>
-                                <p><button [routerLink]="['/Pay',p._id]" class="btn btn-default" id="btnmuangay">MUA
-                                        NGAY</button>
+                                <p>
+                                    <!-- <button [routerLink]="['/Pay',p._id]" class="btn btn-default" id="btnmuangay">MUA
+                                        NGAY</button> -->
                                     <button class="btn btn-default" id="btnAddToCart" (click)="addToCart(p._id)">+ Giỏ
                                         hàng</button>
                                 </p>

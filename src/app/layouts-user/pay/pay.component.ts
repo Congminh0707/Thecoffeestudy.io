@@ -1,3 +1,7 @@
+import { Oder } from './../../models/oder';
+import { User } from 'app/models/user.model';
+import { HttpResponse } from '@angular/common/http';
+import { AuthenService } from 'app/Services/authen.service';
 import { data } from 'jquery';
 import { Coupon } from './../../models/coupon';
 import { ModalService } from './modal/modal.service';
@@ -36,33 +40,57 @@ export class PayComponent implements OnInit {
   coupon: Coupon[];
   couponUse: Coupon;
   isCoupon = true;
+  userInf: User;
+  fullname;
+  phone;
+  address;
+  confirmAddress;
+  oderId;
+  dateTimeNow: string;
+  totalFinal = 0;
+  userId = window.localStorage.getItem('userId');
+  cartId = window.localStorage.getItem('cartId');
   moneyDiscountRate = 0;
   constructor(
     private productService: ProductService,
-    private router: ActivatedRoute,
+    private activeRouter: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder,
     private cartService: CartService,
     private modalService: ModalService,
+    private authenService: AuthenService
   ) { }
 
   get formControlsInfo() { return this.formInfo.controls; }
   get formControlsPay() { return this.formPay.controls; }
   ngOnInit(): void {
-    this.router.params?.subscribe(sucess => {
+    this.activeRouter.params?.subscribe(sucess => {
       if (sucess.productId) {
         this.productId = sucess.productId;
         this.getProduct(this.productId);
       }
     });
+    ///============================///
     ///=========================///
+    this.authenService.getInF(this.userId).subscribe((res: User) => {
+      this.userInf = res;
+      this.fullname = this.userInf.fullname;
+      this.phone = this.userInf.phone;
+      this.address = this.userInf.address;
+    })
     ///=========================///
     this.productService.getCoupon().subscribe((data: Coupon[]) => {
-      console.log(data)
+      // console.log(data)
       //this.coupon = data;
-      data.forEach((c: Coupon) => {
+      data.forEach((c: Coupon, index) => {
+        // console.log(c)
+        // console.log(index)
         c.expiration_date = this.convertDate(c.expiration_date);
       })
-      this.coupon = data;
+      this.coupon = data.filter((c: Coupon) => {
+        return !this.checkDate(c.expiration_date)
+      });
+      // console.log(this.coupon)
     });
     ///=========================///
     this.formInfo = this.formBuilder.group({
@@ -94,14 +122,23 @@ export class PayComponent implements OnInit {
           }
         })
       })
-      console.log(this.CartItem)
+      // console.log(this.CartItem)
+
+      this.totalMonayCart_transportFee();
     })
+    ///======================================///
     ///=========================///
   }
   ///------------------------------------///
-  checkOut() {
+  checkOut(fullname, phone, adress, note, pay) {
     console.log(this.formInfo.value);
     console.log(this.formPay.value);
+    console.log(this.userId)
+    this.cartService.checkOut(true,pay,this.totalFinal.toString(),this.cart,this.userId,adress,note,phone,fullname).subscribe((res: Oder) =>{
+    this.router.navigate([`/tracking/${res.id}`])
+    });
+    let cart = [];
+    window.localStorage.setItem('Cart', cart.toString());
   }
   ///------------------------------------///
   getProduct(productId: string) {
@@ -139,7 +176,7 @@ export class PayComponent implements OnInit {
     }
     let cartItem = JSON.parse(window.localStorage.getItem("Cart"));
     this.cartID = window.localStorage.getItem('cartId');
-    this.cartService.updateCartApi(cartItem,this.cartID).subscribe(res =>{
+    this.cartService.updateCartApi(cartItem, this.cartID).subscribe(res => {
       console.log(res)
     });
   }
@@ -155,78 +192,97 @@ export class PayComponent implements OnInit {
     this.closeModal('modal-rewards')
     this.applyCoupon();
   }
+  useCouponByCode(code: string){
+    code = code.toLowerCase();
+    var couponUse = this.coupon.filter((c:Coupon) =>{
+      c.code = c.code.toLowerCase();
+      return c.code === code;
+    });
+    this.couponUse = couponUse[0];
+    this.closeModal('modal-rewards')
+    this.applyCoupon();
+  }
   ///------------------------------------///
   applyCoupon() {
     let total;
     total = (<HTMLInputElement>document.getElementById('totalMoneyCart')).innerHTML;
     total = total.slice(0, -2)
-    let totalFinal = 0;
     // console.log(total)
     if (this.transportFee > 0) {
-      totalFinal = Number.parseInt(total) + this.transportFee;
+      this.totalFinal = Number.parseInt(total) + this.transportFee;
     }
     else {
-      totalFinal = Number.parseInt(total)
+      this.totalFinal = Number.parseInt(total)
     }
-    (<HTMLInputElement>document.getElementById('totalFinal-p')).innerHTML = totalFinal.toString() + ' đ';
+    (<HTMLInputElement>document.getElementById('totalFinal-p')).innerHTML = this.totalFinal.toString() + ' đ';
     if (this.couponUse.applicable_type == 'Minimum_order_value') {
-      this.isMinimum_number_of_drinks = true;
-      if (Number.parseInt(this.couponUse.minimum_condition) > totalFinal) {
-        this.moneyDiscountRate = 0;
-        this.isMinimum_order_value = false;
-        this.isCoupon = false;
-        return;
-      }
-      else {
-        if (this.couponUse.applicabletype == 'money_reduction') {
-          totalFinal -= Number.parseInt(this.couponUse.discount_rate);
-          this.moneyDiscountRate = Number.parseInt(this.couponUse.discount_rate);
-          this.isCoupon = true;
-          this.isMinimum_order_value = true;
-        }
-        if (this.couponUse.applicabletype == 'percentage_reduction') {
-          this.moneyDiscountRate = totalFinal * Number.parseInt(this.couponUse.discount_rate) / 100;
-          totalFinal -= this.moneyDiscountRate;
-          this.isCoupon = true;
-          this.isMinimum_order_value = true;
-        }
-        console.log(totalFinal);
-        (<HTMLInputElement>document.getElementById('totalFinal-p')).innerHTML = totalFinal.toString() + ' đ';
-      }
+      this.minimumOderValue();
+      console.log(this.totalFinal);
+      (<HTMLInputElement>document.getElementById('totalFinal-p')).innerHTML = this.totalFinal.toString() + ' đ';
     }
     if (this.couponUse.applicable_type == 'Minimum_number_of_drinks') {
-      this.isMinimum_order_value = true;
-      var qty = this.checkQtyCart();
-      if(Number.parseInt(this.couponUse.minimum_condition) > qty){
-        this.moneyDiscountRate = 0;
-        this.isMinimum_number_of_drinks = false;
-        this.isCoupon = false;
-        return;
-      }
-      else{
-        if (this.couponUse.applicabletype == 'money_reduction') {
-          totalFinal -= Number.parseInt(this.couponUse.discount_rate);
-          this.moneyDiscountRate = Number.parseInt(this.couponUse.discount_rate);
-          this.isCoupon = true;
-          this.isMinimum_number_of_drinks = true;
-        }
-        if (this.couponUse.applicabletype == 'percentage_reduction') {
-          this.moneyDiscountRate = totalFinal * Number.parseInt(this.couponUse.discount_rate) / 100;
-          totalFinal -= this.moneyDiscountRate;
-          this.isCoupon = true;
-          this.isMinimum_number_of_drinks = true;
-        }
-      }
-      console.log(totalFinal);
-      (<HTMLInputElement>document.getElementById('totalFinal-p')).innerHTML = totalFinal.toString() + ' đ';
+      this.minimumNumberOfDrink();
+      console.log(this.totalFinal);
+      (<HTMLInputElement>document.getElementById('totalFinal-p')).innerHTML = this.totalFinal.toString() + ' đ';
     }
+  }
+  ///-------------------------------------------///
+  minimumNumberOfDrink() {
+    this.isMinimum_order_value = true;
+    var qty = this.checkQtyCart();
+    if (Number.parseInt(this.couponUse.minimum_condition) > qty) {
+      this.moneyDiscountRate = 0;
+      this.isMinimum_number_of_drinks = false;
+      this.isCoupon = false;
+      return;
+    }
+    else {
+      if (this.couponUse.applicabletype == 'money_reduction') {
+        this.moneyReduction();
+      }
+      if (this.couponUse.applicabletype == 'percentage_reduction') {
+        this.percentageReduction();
+      }
+    }
+  }
+  ///----------------------------------------------///
+  minimumOderValue() {
+    this.isMinimum_number_of_drinks = true;
+    if (Number.parseInt(this.couponUse.minimum_condition) > this.totalFinal) {
+      this.moneyDiscountRate = 0;
+      this.isMinimum_order_value = false;
+      this.isCoupon = false;
+      return;
+    }
+    else {
+      if (this.couponUse.applicabletype == 'money_reduction') {
+        this.moneyReduction();
+      }
+      if (this.couponUse.applicabletype == 'percentage_reduction') {
+        this.percentageReduction();
+      }
+    }
+  }
+  ////------------------------------------///
+  moneyReduction() {
+    this.totalFinal -= Number.parseInt(this.couponUse.discount_rate);
+    this.moneyDiscountRate = Number.parseInt(this.couponUse.discount_rate);
+    this.isCoupon = true;
+    this.isMinimum_order_value = true;
+  }
+  ///------------------------------------///
+  percentageReduction() {
+    this.moneyDiscountRate = this.totalFinal * Number.parseInt(this.couponUse.discount_rate) / 100;
+    this.totalFinal -= this.moneyDiscountRate;
+    this.isCoupon = true;
+    this.isMinimum_order_value = true;
   }
   ///------------------------------------///
   openModal(id: string) {
     this.modalService.open(id);
   }
   ///------------------------------------///
-  checkQtyCart(){
+  checkQtyCart() {
     let cart = JSON.parse(window.localStorage.getItem("Cart"));
     var qty = 0;
     cart.forEach(data => {
@@ -252,16 +308,43 @@ export class PayComponent implements OnInit {
   dateStringToTimestamp(date: string): number {
     return Number.parseInt(moment(date, this.datetimeformart).format('x'));
   }
-  totalMonayCart_transportFee(){
+  ///-------------------------------------///
+  checkDate(date: string) {
+    var currentdate = new Date();
+    var dateTimeNow = this.convertDate(currentdate)
+    return dateTimeNow >= date;
+  }
+  ///-------------------------------------///
+  totalMonayCart_transportFee() {
     var qtyCart = this.checkQtyCart();
-    if(qtyCart > 1){
+    if (qtyCart > 1) {
       this.transportFee = 0;
       (<HTMLInputElement>document.getElementById('totalFinal-p')).innerHTML = this.totalMoneyCart.toString() + ' đ';
     }
-    else{
+    else {
       this.transportFee = 10000;
       this.totalMoneyCart += this.transportFee;
+      // console.log(this.totalMoneyCart);
       (<HTMLInputElement>document.getElementById('totalFinal-p')).innerHTML = this.totalMoneyCart.toString() + ' đ';
     }
+  }
+  saveInf(fullname, phone, adress) {
+    this.authenService.updateUser(this.cartId, this.userId, null, fullname, adress, phone).subscribe((res: HttpResponse<any>) => {
+      console.log(res);
+    })
+  }
+  pad(n) { return ("0" + n).slice(-2); }
+  inf(address){
+    let date = new Date();
+    let hours = date.getHours();
+    let minute = date.getMinutes();
+    minute +=30;
+    if(minute>=60){
+      hours+=1;
+      minute-=60;
+    }
+    // console.log(hours+" : " +minute);
+    // console.log(address)
+    this.confirmAddress = "Đơn hàng Giao tận nơi sẽ được giao vào "+this.pad(hours)+"h"+this.pad(minute)+" hôm nay tại "+ address;
   }
 }

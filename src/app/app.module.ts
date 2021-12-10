@@ -45,6 +45,7 @@ import { CouponComponent } from './layouts-user/coupon/coupon.component';
 import { ModalModule } from 'ng2-modal-module';
 import { ModalComponent } from './layouts-user/pay/modal/modal.component';
 import { OrdersComponent } from './layouts-staff/orders/orders.component';
+import { TrackingComponent } from './layouts-user/tracking/tracking.component';
 
 @NgModule({
   imports: [
@@ -89,6 +90,7 @@ import { OrdersComponent } from './layouts-staff/orders/orders.component';
     CouponComponent,
     ModalComponent,
     OrdersComponent,
+    TrackingComponent,
 
   ],
   providers: [
