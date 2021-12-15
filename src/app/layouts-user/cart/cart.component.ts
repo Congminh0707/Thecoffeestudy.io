@@ -55,9 +55,9 @@ export class CartComponent implements OnInit {
     this.qty = (<HTMLInputElement>document.getElementById(_id)).value;
     var total =  this.qty * price;
    (<HTMLInputElement>document.getElementById('total.'+_id)).innerHTML = total.toString()+' đ';
-    console.log(this.qty)
-    console.log(_id)
-    this.cartService.updateCartLocal(_id,this.qty); 
+    // console.log(this.qty)
+    // console.log(_id)
+    this.cartService.updateCartLocal(_id,Number.parseInt(this.qty)); 
     this.cart = JSON.parse(window.localStorage.getItem("Cart"));
     this.totalMoneyCart = 0;
     this.cart.forEach((c :Cart) =>{
@@ -71,7 +71,7 @@ export class CartComponent implements OnInit {
     let cartItem = JSON.parse(window.localStorage.getItem("Cart"));
     this.cartID = window.localStorage.getItem('cartId');
     this.cartService.updateCartApi(cartItem,this.cartID).subscribe(res =>{
-      // console.log(res)
+      console.log(res)
     });
   }
 }

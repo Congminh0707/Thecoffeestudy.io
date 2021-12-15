@@ -28,6 +28,7 @@ export class TrackingComponent implements OnInit {
     this.cartService.getOder(this.oderId).subscribe((data: Oder) =>{
       this.CartItem = data.items;
       this.oder = data;
+      console.log(this.oder)
       this.totalMoneyCart = Number.parseInt(data.totalmoney);
     })
   }

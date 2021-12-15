@@ -7,6 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { BannerComponent } from './banner/banner.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -22,6 +23,7 @@ import { MenuComponent } from './menu/menu.component';
     BannerComponent,
     HeaderComponent,
     MenuComponent,
+    PageNotFoundComponent,
   ],
   exports: [
     FooterComponent,

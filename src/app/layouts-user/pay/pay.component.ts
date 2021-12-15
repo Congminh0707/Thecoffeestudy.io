@@ -107,7 +107,14 @@ export class PayComponent implements OnInit {
     this.cart = JSON.parse(window.localStorage.getItem("Cart"));
     ///=========================///
     ///=========================///
+    this.getProductByCart();
+    ///======================================///
+    ///=========================///
+  }
+  //---------------------------------------------//
+  getProductByCart(){
     this.productService.getProducts().subscribe((data: Product[]) => {
+      this.CartItem = [];
       data.forEach(p => {
         this.cart.forEach((c: Cart) => {
           if (c.id == p._id) {
@@ -121,13 +128,10 @@ export class PayComponent implements OnInit {
             this.totalMoneyCart += c.qty * Number.parseInt(p.price);
           }
         })
-      })
+      });
       // console.log(this.CartItem)
-
       this.totalMonayCart_transportFee();
     })
-    ///======================================///
-    ///=========================///
   }
   ///------------------------------------///
   checkOut(fullname, phone, adress, note, pay) {
@@ -137,8 +141,9 @@ export class PayComponent implements OnInit {
     this.cartService.checkOut(true,pay,this.totalFinal.toString(),this.cart,this.userId,adress,note,phone,fullname).subscribe((res: Oder) =>{
     this.router.navigate([`/tracking/${res.id}`])
     });
+    console.log(this.cart);
     let cart = [];
-    window.localStorage.setItem('Cart', cart.toString());
+    window.localStorage.setItem('Cart', '[]');
   }
   ///------------------------------------///
   getProduct(productId: string) {
@@ -159,7 +164,7 @@ export class PayComponent implements OnInit {
     (<HTMLInputElement>document.getElementById('total.' + _id)).innerHTML = total.toString() + ' đ';
     console.log(this.qty)
     console.log(_id)
-    this.cartService.updateCartLocal(_id, this.qty);
+    this.cartService.updateCartLocal(_id,Number.parseInt(this.qty)); 
     this.cart = JSON.parse(window.localStorage.getItem("Cart"));
     this.totalMoneyCart = 0;
     this.cart.forEach((c: Cart) => {
@@ -179,6 +184,7 @@ export class PayComponent implements OnInit {
     this.cartService.updateCartApi(cartItem, this.cartID).subscribe(res => {
       console.log(res)
     });
+    this.getProductByCart();
   }
   ///------------------------------------///
   useCoupon(idCoupon: string) {
@@ -238,9 +244,11 @@ export class PayComponent implements OnInit {
     }
     else {
       if (this.couponUse.applicabletype == 'money_reduction') {
+        this.isMinimum_number_of_drinks= true;
         this.moneyReduction();
       }
       if (this.couponUse.applicabletype == 'percentage_reduction') {
+        this.isMinimum_number_of_drinks= true;
         this.percentageReduction();
       }
     }

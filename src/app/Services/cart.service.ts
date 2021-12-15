@@ -36,7 +36,7 @@ export class CartService {
       }
     }
   }
-  updateCartLocal(id: string, qty: string) {
+  updateCartLocal(id: string, qty: number) {
     let i = 0;
     let cart = JSON.parse(window.localStorage.getItem("Cart"));
     cart.forEach(element => {

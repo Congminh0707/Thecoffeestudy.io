@@ -1,8 +1,10 @@
 @media screen and (max-width: 2000px) {
     img {
-        margin-top: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        border: none;
+        max-width: 90%;
         height: auto;
-        max-width: 100%;
     }
 
     .margin-product {
@@ -11,56 +13,80 @@
 
     }
 
+    .name {
+        font-weight: 600;
+        color: #000;
+        margin-left: 10px;
+    }
+
+    .price {
+        position: absolute;
+        bottom: 5%;
+        margin-left: 10px;
+
+    }
+
     .shadow {
         box-shadow: 5px 5px 5px yellow;
+        border-radius: 10px;
         margin-top: 10px;
         padding-left: 7.5px;
         padding-right: 0px;
         margin-bottom: 10px;
-        width: 300px;
-        margin-right: 70px;
+        width: 200px;
+        margin-right: 50px;
         padding: 0%;
-        height: 350px;
+        height: 320px;
     }
 
     #btnmuangay {
-        border: solid 2px;
-        border-color: darkred;
         background-color: darkred;
         color: white;
-        padding: 0;
-        width: 80px;
-        font-size: 10px;
+        margin-left: 100px;
         height: 40px;
-        text-align: center;
+        width: 100px;
         padding: 0;
+        text-align: center;
     }
 
     #btnAddToCart {
-        border: solid 2px;
-        border-color: darkred;
-        background-color: #bd1e1ecf;
+        background-color: darkred;
+        color: white;
+        margin: 30px 0 0 150px;
+        height: 30px;
+        width: 30px;
         padding: 0;
-        width: 80px;
-        font-size: 10px;
-        height: 40px;
         text-align: center;
-        padding: 0;
-        position: absolute;
-        right: 0%;
+        font-size: 20px;
+        border-radius: 15px;
     }
 }
 
 @media screen and (max-width: 1280px) {
     img {
+        margin: 10px;
         border-radius: 10px;
+        border: none;
+        max-width: 90%;
         height: auto;
-        max-width: 100%;
     }
 
     .margin-product {
         margin-right: 70px;
         padding: 0%;
+    }
+
+    .name {
+        font-weight: 600;
+        color: #000;
+        margin-left: 10px;
+    }
+
+    .price {
+        position: absolute;
+        bottom: 5%;
+        margin-left: 10px;
+
     }
 
     .shadow {
@@ -76,36 +102,46 @@
     }
 
     #btnmuangay {
-        border: solid 2px;
-        border-color: darkred;
         background-color: darkred;
         color: white;
-        width: 70px;
-        font-size: 10px;
+        margin-left: 100px;
         height: 40px;
-        text-align: center;
+        width: 100px;
         padding: 0;
+        text-align: center;
     }
 
     #btnAddToCart {
-        border: solid 2px;
-        border-color: darkred;
-        background-color: #bd1e1ecf;
-        width: 70px;
-        font-size: 10px;
+        background-color: darkred;
+        color: white;
+        margin-left: 100px;
         height: 40px;
-        text-align: center;
+        width: 100px;
         padding: 0;
-        position: absolute;
-        right: 0%;
+        text-align: center;
     }
 }
 
 @media screen and (max-width: 770px) {
     img {
+        margin: 10px;
         border-radius: 10px;
+        border: none;
+        max-width: 90%;
         height: auto;
-        max-width: 100%;
+    }
+
+    .name {
+        font-weight: 600;
+        color: #000;
+        margin-left: 10px;
+    }
+
+    .price {
+        position: absolute;
+        bottom: 5%;
+        margin-left: 10px;
+
     }
 
     .margin-product {
@@ -126,28 +162,23 @@
     }
 
     #btnmuangay {
-        border: solid 2px;
-        border-color: darkred;
         background-color: darkred;
         color: white;
-        width: 100px;
-        font-size: 10px;
+        margin-left: 100px;
         height: 40px;
-        text-align: center;
+        width: 100px;
         padding: 0;
+        text-align: center;
     }
 
     #btnAddToCart {
-        border: solid 2px;
-        border-color: darkred;
-        background-color: #bd1e1ecf;
-        width: 100px;
-        font-size: 10px;
+        background-color: darkred;
+        color: white;
+        margin-left: 100px;
         height: 40px;
-        text-align: center;
+        width: 100px;
         padding: 0;
-        position: absolute;
-        right: 0%;
+        text-align: center;
     }
 }
 
@@ -160,6 +191,7 @@
     background-color: darkred;
     color: white;
 }
+
 #btnbtnAddToCart:focus {
     background-color: darkred;
     color: white;
@@ -190,13 +222,9 @@ body {
     background-color: #f5f5f5;
 }
 
-h3{
+h3 {
     font-weight: 800;
     text-shadow: black;
 }
 
-.see-more{
-    
-}
-
-
+.see-more {}

@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './layouts-block/page-not-found/page-not-found.component';
 import { TrackingComponent } from './layouts-user/tracking/tracking.component';
 import { OrdersComponent } from './layouts-staff/orders/orders.component';
 import { CouponComponent } from './layouts-user/coupon/coupon.component';
@@ -100,13 +101,18 @@ const routes: Routes = [
       },
       {
         path: 'rewards',
-        component: RewardsComponent 
+        component: RewardsComponent
       },
       {
         path: 'coupon',
         component: CouponComponent
       }
     ],
+  },
+  
+  {
+    path: '**', 
+    component: PageNotFoundComponent
   },
 ];
 

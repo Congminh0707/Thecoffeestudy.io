@@ -1,23 +1,30 @@
-<div class="container" style="margin-top:50px">
-    <div class="row col-md-12 col-xs-12 col-sm-12">
-        <div class="col-md-2 col-xs-2 col-sm-2">
-            <div *ngFor="let category of category" (click)="clickProduct(category._id)">
-                <a class="h">
+<div class="backgroud">
+    <div class="container" style="margin-top:50px">
+        <div class="row col-md-12 col-xs-12 col-sm-12">
+            <div class="col-md-2 col-sm-2 col-xs-2"></div>
+            <div class="cate" *ngFor="let category of category let i = index" [attr.data-index]="i"
+                (click)="clickProduct(category._id,i)">
+                <a id="cate.{{i}}" class="h">
                     <span></span>
                     <span></span>
                     <span></span>
-                    <span></span>
-                    {{category.name}}
+                    <span><img class="img-cate" [src]="category.img.url" alt=""></span>
+                    <br>
+                    <br>
+                    <p id="cate-name.{{i}}" class="name-cate">{{category.name}}</p>
                 </a>
             </div>
         </div>
-        <div class="row col-md-10 col-xs-10 col-sm-10">
-            <div class="col-md-3 col-xs-10 col-sm-10 shadow" *ngFor="let product of product">
-                <!-- <img src="http://thecoffeestudy.xyz:1337{{product.image[0].url}}" [routerLink]="['/products-detail',product._id]" /> -->
-                <img [src]="product.image.url" [routerLink]="['/products-detail',product._id]" />
-                <p class="name"><b>{{product.name}}</b></p>
-                <p class="price"><b>{{product.price}} đ</b></p>
-                <p><button class="btn btn-default" id="btnmuangay">MUA NGAY</button>
+        <div class="row col-md-12 col-xs-12 col-sm-12">
+            <div class="col-md-2 col-xs-2 col-sm-2"></div>
+            <div class="row col-md-10 col-xs-10 col-sm-10">
+                <div class="col-md-3 col-xs-10 col-sm-10 shadow" *ngFor="let product of product">
+                    <!-- <img src="http://thecoffeestudy.xyz:1337{{product.image[0].url}}" [routerLink]="['/products-detail',product._id]" /> -->
+                    <img [src]="product.image.url" [routerLink]="['/products-detail',product._id]" />
+                    <p class="name"><b>{{product.name}}</b></p>
+                    <p class="price"><b>{{product.price}} đ</b></p>
+                    <p><button class="btn btn-default" id="btnmuangay">+</button>
+                </div>
             </div>
         </div>
     </div>

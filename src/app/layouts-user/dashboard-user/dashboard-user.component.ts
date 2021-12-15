@@ -32,7 +32,7 @@ export class DashboardUserComponent implements OnInit {
     this.productService.getCate().subscribe((category: any[]) => {
       this.category = category;
       category.forEach(data =>{
-        console.log(data);
+        // console.log(data);
       });
     });
   }
@@ -41,7 +41,7 @@ export class DashboardUserComponent implements OnInit {
     let cartItem = JSON.parse(window.localStorage.getItem("Cart"));
     this.cartId = window.localStorage.getItem('cartId');
     this.cartService.updateCartApi(cartItem,this.cartId).subscribe(res =>{
-      console.log(res)
+      // console.log(res)
     });
   }
   // converProduct(data): Product[]{

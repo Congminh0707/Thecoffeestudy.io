@@ -20,7 +20,7 @@ export class CouponComponent implements OnInit {
   coupon : Coupon[];
   ngOnInit(): void {
     this.productService.getCoupon().subscribe((data: Coupon[])=> {
-      console.log(data)
+      // console.log(data)
       //this.coupon = data;
       data.forEach((c: Coupon) =>{
         c.expiration_date = this.convertDate(c.expiration_date);

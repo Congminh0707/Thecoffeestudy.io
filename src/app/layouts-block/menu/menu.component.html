@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color:  rgb(182, 55, 17);">
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:  #9d2621; box-shadow: rgba(250, 4, 4, 0.877) 0px 3px 5px;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
         aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,22 +12,22 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <button class="custom-btn btn-8" routerLink="/home"><span>Trang Chủ</span></button>
+                <button id="home" class="custom-btn btn-8" (click)="cssChange('home')" routerLink="/home"><span>Trang Chủ</span></button>
             </li>
             <li class="nav-item active dropdown">
-                <button class="custom-btn btn-8" routerLink="/Menu"><span>Menu</span></button>
+                <button id=menu class="custom-btn btn-8" (click)="cssChange('menu')" routerLink="/Menu"><span>Menu</span></button>
             </li>
             <li class="nav-item active dropdown">
-                <button class="custom-btn btn-8" routerLink="/study"><span>Học Tập</span></button>
+                <button id="study" class="custom-btn btn-8" (click)="cssChange('study')" routerLink="/study"><span>Học Tập</span></button>
             </li>
             <li class="nav-item active">
-                <button class="custom-btn btn-8" routerLink="/coupon"><span>Khuyến Mãi</span></button>
+                <button id="coupon" class="custom-btn btn-8" (click)="cssChange('coupon')" routerLink="/coupon"><span>Khuyến Mãi</span></button>
             </li>
             <li class="nav-item active">
-                <button class="custom-btn btn-8" routerLink="/Blog"><span>Blog</span></button>
+                <button id="blog" class="custom-btn btn-8" (click)="cssChange('blog')"  routerLink="/Blog"><span>Blog</span></button>
             </li>
             <li class="nav-item active">
-                <button class="custom-btn btn-8" routerLink="/coffee"><span>Cửa Hàng</span></button>
+                <button id="store" class="custom-btn btn-8" (click)="cssChange('store')" routerLink="/coffee"><span>Cửa Hàng</span></button>
             </li>
             <li class="nav-item active">
                 <button [hidden]="roles != 'Admin' " class="custom-btn btn-8" routerLink="/admin"><span>Admin</span></button>
@@ -43,7 +43,7 @@
         </div>
     </div>
 </nav>
-<div class="dk"></div>
+<!-- <div class="dk"></div> -->
 
 
 
