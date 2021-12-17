@@ -88,8 +88,11 @@ export class PayComponent implements OnInit {
         c.expiration_date = this.convertDate(c.expiration_date);
       })
       this.coupon = data.filter((c: Coupon) => {
-        return !this.checkDate(c.expiration_date)
+        return !this.checkDate(c.expiration_date) && c.show
       });
+      // this.coupon = this.coupon.filter(c =>{
+      //   return c.show
+      // });
       // console.log(this.coupon)
     });
     ///=========================///

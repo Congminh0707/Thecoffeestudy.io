@@ -1,3 +1,4 @@
+import { TermsComponent } from './layouts-user/terms/terms.component';
 import { PageNotFoundComponent } from './layouts-block/page-not-found/page-not-found.component';
 import { TrackingComponent } from './layouts-user/tracking/tracking.component';
 import { OrdersComponent } from './layouts-staff/orders/orders.component';
@@ -106,6 +107,10 @@ const routes: Routes = [
       {
         path: 'coupon',
         component: CouponComponent
+      },
+      {
+        path: 'terms',
+        component: TermsComponent
       }
     ],
   },

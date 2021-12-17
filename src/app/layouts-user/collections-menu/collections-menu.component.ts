@@ -1,3 +1,5 @@
+import { MessageService } from './../../Services/message.service';
+import { CartService } from './../../Services/cart.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { Product } from 'app/models/Product';
 import { Component, OnInit } from '@angular/core';
@@ -17,9 +19,12 @@ export class CollectionsMenuComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService,
+    private data: MessageService,
   ) { }
   categoryId;
+  cartId;
   ngOnInit(): void {
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
@@ -69,5 +74,15 @@ export class CollectionsMenuComponent implements OnInit {
   cssNewByIdCate(index) {
     document.getElementById('cate.' + index).style.backgroundColor = "#ffe7ba";
     document.getElementById('cate-name.' + index).style.color = "#fa8c16";
+  }
+  addToCart(id: string){
+    this.cartService.addToCart(id);
+    let cartItem = JSON.parse(window.localStorage.getItem("Cart"));
+    this.cartId = window.localStorage.getItem('cartId');
+    this.cartService.updateCartApi(cartItem,this.cartId).subscribe(res =>{
+      // console.log(res)
+    });
+    this.data.changeMessage(cartItem.length);
+    // this.messageEvent.emit(cartItem.length);
   }
 }

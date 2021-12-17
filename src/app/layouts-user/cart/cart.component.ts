@@ -1,3 +1,4 @@
+import { MessageService } from './../../Services/message.service';
 import { CartService } from './../../Services/cart.service';
 import { Cart } from './../../models/cart';
 import { ProductService } from './../../Services/product.service';
@@ -13,7 +14,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private message: MessageService
   ) { }
   product: Product[];
   cartID;
@@ -50,6 +52,7 @@ export class CartComponent implements OnInit {
       // console.log(res)
     });
     location.reload();
+    this.message.changeMessage(cartItem.lenght)
   }
   upDate(_id, price){
     this.qty = (<HTMLInputElement>document.getElementById(_id)).value;

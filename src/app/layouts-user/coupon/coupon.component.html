@@ -4,11 +4,10 @@
     </div>
     <div class="row col-md-12">
         <div class="row col-md-2">
-
         </div>
         <div class="row col-md-10">
             <div *ngFor="let c of coupon" class="col-md-3 shadow">
-                <img src="/assets/images/MACCHIATO.jpg">
+                <img [src]="c.image.url">
                 <div class="rewards">{{c.name}}</div>
                 <p class="description">{{c.description}}</p>
                 <p class="time-end">Hết hạn {{c.expiration_date}}</p>

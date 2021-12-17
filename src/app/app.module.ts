@@ -13,18 +13,12 @@ import { AppComponent } from './app.component';
 import {
   AgmCoreModule
 } from '@agm/core';
-import { FooterComponent } from './layouts-block/footer/footer.component';
-import { HeaderComponent } from './layouts-block/header/header.component';
-import { BannerComponent } from './layouts-block/banner/banner.component';
-import { NavbarComponent } from './layouts-block/navbar/navbar.component';
-import { SidebarComponent } from './layouts-block/sidebar/sidebar.component';
 import { SignupComponent } from './layouts-shared/signup/signup.component';
 import { SigninComponent } from './layouts-shared/signin/signin.component';
 import { ForgotPasswordComponent } from './layouts-shared/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './layouts-shared/new-password/new-password.component';
 import { ViewUserComponent } from './layouts-user/view-user/view-user.component';
 import { DashboardUserComponent } from './layouts-user/dashboard-user/dashboard-user.component';
-import { MenuComponent } from './layouts-block/menu/menu.component';
 import { DefaultStudyComponent } from './layouts-user/default-study/default-study.component';
 import { DetailProductComponent } from './layouts-user/detail-product/detail-product.component';
 import { RatingComponent } from './layouts-user/rating/rating.component';
@@ -46,6 +40,14 @@ import { ModalModule } from 'ng2-modal-module';
 import { ModalComponent } from './layouts-user/pay/modal/modal.component';
 import { OrdersComponent } from './layouts-staff/orders/orders.component';
 import { TrackingComponent } from './layouts-user/tracking/tracking.component';
+import { MenuComponent } from './layouts-block/menu/menu.component';
+import { FooterComponent } from './layouts-block/footer/footer.component';
+import { HeaderComponent } from './layouts-block/header/header.component';
+import { BannerComponent } from './layouts-block/banner/banner.component';
+import { NavbarComponent } from './layouts-block/navbar/navbar.component';
+import { SidebarComponent } from './layouts-block/sidebar/sidebar.component';
+import { PageNotFoundComponent } from './layouts-block/page-not-found/page-not-found.component';
+import { TermsComponent } from './layouts-user/terms/terms.component';
 
 @NgModule({
   imports: [
@@ -91,6 +93,8 @@ import { TrackingComponent } from './layouts-user/tracking/tracking.component';
     ModalComponent,
     OrdersComponent,
     TrackingComponent,
+    PageNotFoundComponent,
+    TermsComponent,
 
   ],
   providers: [

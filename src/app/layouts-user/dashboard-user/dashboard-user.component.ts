@@ -1,8 +1,9 @@
+import { MessageService } from './../../Services/message.service';
 import { Router,NavigationEnd } from '@angular/router';
 import { CartService } from './../../Services/cart.service';
 import { Category } from 'app/models/Category.model';
 import { ProductService } from 'app/Services/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from 'app/models/product';
 
 @Component({
@@ -12,16 +13,18 @@ import { Product } from 'app/models/product';
 })
 export class DashboardUserComponent implements OnInit {
 
-  constructor(
-    private productService: ProductService,
-    private cartService: CartService,
-    private router: Router
-  ) { }
   categoryId;
   cartId;
   category;
   product: Product[];
-  
+  message: string;
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private router: Router,
+    private data: MessageService
+  ) { }
+  // @Output() messageEvent = new EventEmitter<string>();
   ngOnInit(): void {
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
@@ -43,6 +46,8 @@ export class DashboardUserComponent implements OnInit {
     this.cartService.updateCartApi(cartItem,this.cartId).subscribe(res =>{
       // console.log(res)
     });
+    this.data.changeMessage(cartItem.length);
+    // this.messageEvent.emit(cartItem.length);
   }
   // converProduct(data): Product[]{
   //   const result = []; 

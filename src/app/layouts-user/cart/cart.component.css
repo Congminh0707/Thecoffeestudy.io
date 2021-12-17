@@ -27,7 +27,11 @@
 
 .btn.btn-warning {
     background-color: darkred;
+    padding: 0;
+    width: 150px;
+    height: 41.14px;
     color: white;
+    text-align: center;
 }
 
 .btn.btn-warning:hover {

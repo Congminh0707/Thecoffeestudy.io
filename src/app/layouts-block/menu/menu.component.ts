@@ -1,3 +1,5 @@
+import { data } from 'jquery';
+import { MessageService } from './../../Services/message.service';
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -5,6 +7,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
+  // template: `
+  //   Message: {{message}}
+  //   <app-dashboard-user (messageEvent)="receiveMessage($event)"></app-dashboard-user>
+  // `,
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
@@ -13,21 +19,30 @@ export class MenuComponent implements OnInit {
   cart;
   qty;
   constructor(
-    private router: Router
+    private router: Router,
+    private data: MessageService
   ) { }
-
+  receiveMessage($event) {
+    this.qty = $event;
+  }
   ngOnInit(): void {
+    this.data.currentMessage.subscribe(qty => this.qty = qty);
     this.cart = JSON.parse(window.localStorage.getItem('Cart'))
-   
     const url = window.location.href;
-    this.cssChange(url.split('/')[3].toLowerCase())
+    var templ;
+    templ = this.idMenu.filter(data =>{
+      return data == url.split('/')[3].toLowerCase();
+    })
+    if(templ.lenght >0){
+      this.cssChange(templ[0])
+    }
     if (!this.cart) {
     }
     else
       this.qty = this.cart.length;
     console.log(this.cart)
     this.roles = window.localStorage.getItem('roles');
-    
+
   }
   idMenu = ['home', 'menu', 'study', 'coupon', 'blog', 'store'];
   cssChange(id: string) {
@@ -40,9 +55,9 @@ export class MenuComponent implements OnInit {
       if (idc != id) {
         this.cssDefault(idc);
       }
-    }); 
+    });
   }
-  
+
   cssDefault(id: string) {
     document.getElementById(id).style.backgroundColor = '#9d2621';
     document.getElementById(id).style.boxShadow = 'none';

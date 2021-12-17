@@ -13,5 +13,6 @@ export class Coupon {
     updatedAt: string;
     __v: 0;
     _id: string;
+    show: boolean;
     applicabletype: string;
 }

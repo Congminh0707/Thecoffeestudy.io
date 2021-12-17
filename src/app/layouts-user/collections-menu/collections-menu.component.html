@@ -23,7 +23,7 @@
                     <img [src]="product.image.url" [routerLink]="['/products-detail',product._id]" />
                     <p class="name"><b>{{product.name}}</b></p>
                     <p class="price"><b>{{product.price}} đ</b></p>
-                    <p><button class="btn btn-default" id="btnmuangay">+</button>
+                    <p><button (click)="addToCart(product.id)" class="btn btn-default" id="btnmuangay">+</button>
                 </div>
             </div>
         </div>

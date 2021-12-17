@@ -61,6 +61,10 @@
                     </ul>
                 </form>
             </div>
+            <div><i class="fa fa-check-square"></i> Đồng ý với
+                <a routerLink="/terms" class="terms">điều khoản và điều kiện</a>
+                mua hàng của The Coffee Study
+            </div>
         </div>
         <div class="row col-md-4 form-Credit-Card">
             <div class="row col-md-12 header-form-Credit-Card">
@@ -135,7 +139,8 @@
                     </button>
                 </div>
                 <div class="col-md-6 check-out">
-                    <button (click)="openModal('modal-confirm')" (click)="inf(adressInput.value)" class="btn btn-default btn-check-out">Đặt hàng</button>
+                    <button (click)="openModal('modal-confirm')" (click)="inf(adressInput.value)"
+                        class="btn btn-default btn-check-out">Đặt hàng</button>
                 </div>
             </div>
         </div>
@@ -150,7 +155,7 @@
     </div>
     <div class="row">
         <div *ngFor="let c of coupon" class="row col-md-12 shadow">
-            <img class="col-md-2 img-rewards" src="/assets/images/MACCHIATO.jpg">
+            <img class="col-md-2 img-rewards" [src]="c.image.url">
             <div class="col-md-3 rewards">{{c.name}}</div>
             <p class="col-md-3 description">{{c.description}}</p>
             <p class="col-md-3 time-end">Hết hạn {{c.expiration_date}}
@@ -166,8 +171,11 @@
         {{confirmAddress}}
     </div>
     <div class="confirm">
-        <input class="btn-confirm" (click)="checkOut(usernameInput.value, phoneInput.value, adressInput.value, noteInput.value, Pay.value)"  type="button" value="Xác nhận">
+        <input class="btn-confirm"
+            (click)="checkOut(usernameInput.value, phoneInput.value, adressInput.value, noteInput.value, Pay.value)"
+            type="button" value="Xác nhận">
         <hr style="display: block; border-top: 0;">
-        <input class="change-information" (click)="closeModal('modal-confirm')" type="button" value="Thay đổi thông tin">
+        <input class="change-information" (click)="closeModal('modal-confirm')" type="button"
+            value="Thay đổi thông tin">
     </div>
 </jw-modal>
