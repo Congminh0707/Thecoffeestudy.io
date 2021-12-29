@@ -68,6 +68,7 @@ img{
 .line {
     width: 100%;
     background-color: rgb(224, 224, 224);
+    
     /* margin: 0; */
 }
 .cart {
@@ -97,6 +98,10 @@ img{
     height: 40px;
     width: 120px;
     border-radius: 10px;
+}
+.coupon-money{
+    position: absolute;
+    left: 57%;
 }
 .font{
     font-weight: 500;

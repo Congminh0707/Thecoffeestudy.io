@@ -1,5 +1,5 @@
-
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:  #9d2621; box-shadow: rgba(250, 4, 4, 0.877) 0px 3px 5px;">
+<nav class="navbar navbar-expand-lg navbar-light"
+    style="background-color:  #9d2621; box-shadow: rgba(250, 4, 4, 0.877) 0px 3px 5px;">
     <a routerLink="/coffee" style="margin-right: 50px;">
         <img src="/assets/images/logo.png" width="200" height="100">
     </a>
@@ -9,28 +9,51 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <button id="home" class="custom-btn btn-8" (click)="cssChange('home')" routerLink="/home"><span>Trang Chủ</span></button>
+                <button id="home" class="custom-btn btn-8" routerLink="/home"><span>Trang
+                        Chủ</span></button>
             </li>
             <li class="nav-item active dropdown">
-                <button id=menu class="custom-btn btn-8" (click)="cssChange('menu')" routerLink="/Menu"><span>Menu</span></button>
+                <button id=menu class="custom-btn btn-8" routerLink="/Menu"><span>Menu</span></button>
             </li>
             <li class="nav-item active dropdown">
-                <button id="study" class="custom-btn btn-8" (click)="cssChange('study')" routerLink="/study"><span>Học Tập</span></button>
+                <button class="custom-btn btn-8" routerLink="/study"><span>Học Tập</span></button>
+                <div *ngIf="roles == 'Student'">
+                    <div class="dropdown">
+                        <div class="dropdown-content">
+                            <a class="btn radius" routerLink="/Calendar">Xem lịch</a>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="roles == 'Lecturers'">
+                    <div class="dropdown">
+                        <div class="dropdown-content">
+                            <a class="btn radius" routerLink="/Calendar">Xem lịch</a>
+                        </div>
+                    </div>
+                </div>
             </li>
             <li class="nav-item active">
-                <button id="coupon" class="custom-btn btn-8" (click)="cssChange('coupon')" routerLink="/coupon"><span>Khuyến Mãi</span></button>
+                <button class="custom-btn btn-8" routerLink="/Blog"><span>Blog</span></button>
             </li>
             <li class="nav-item active">
-                <button id="blog" class="custom-btn btn-8" (click)="cssChange('blog')"  routerLink="/Blog"><span>Blog</span></button>
+                <button class="custom-btn btn-8" routerLink="/Store"><span>Cửa Hàng</span></button>
             </li>
             <li class="nav-item active">
-                <button id="store" class="custom-btn btn-8" (click)="cssChange('store')" routerLink="/coffee"><span>Cửa Hàng</span></button>
+                <button class="custom-btn btn-8" routerLink="/Event"><span>Sự Kiện</span></button>
             </li>
-            <li class="nav-item active">
-                <button [hidden]="roles != 'Admin' " class="custom-btn btn-8" routerLink="/admin"><span>Admin</span></button>
-            </li>
+            <div *ngIf="roles == 'Lecturers'">
+                <li class="nav-item active dropdown">
+                    <button class="custom-btn btn-8" routerLink="/ClubManager"><span>Club</span></button>
+                    <div class="dropdown">
+                        <div class="dropdown-content">
+                            <a class="btn radius" routerLink="/MemberProfile">thông tin thành viên</a>
+                            <a class="btn radius" routerLink="/ContentClub">Kế hoạch hoạt động</a>
+                        </div>
+                    </div>
+                </li>
+            </div>
         </ul>
-        <form [hidden]="roles == 'Admin' " class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2 search" type="search" placeholder="Search" aria-label="Search">
             <button class="custom-btn btn-8" type="submit">Search</button>
         </form>

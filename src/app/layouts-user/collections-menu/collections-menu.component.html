@@ -22,7 +22,7 @@
                     <!-- <img src="http://thecoffeestudy.xyz:1337{{product.image[0].url}}" [routerLink]="['/products-detail',product._id]" /> -->
                     <img [src]="product.image.url" [routerLink]="['/products-detail',product._id]" />
                     <p class="name"><b>{{product.name}}</b></p>
-                    <p class="price"><b>{{product.price}} đ</b></p>
+                    <p class="price"><b>{{product.price | PipeMoney}} đ</b></p>
                     <p><button (click)="addToCart(product.id)" class="btn btn-default" id="btnmuangay">+</button>
                 </div>
             </div>

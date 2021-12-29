@@ -1,45 +1,52 @@
-.header1{
-    background-color:#5F5F5F;
-    max-width: auto;
-    height:40px;
-    color: white;
-    padding: 5px;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 17px;
+.header1 {
+  background-color: #5F5F5F;
+  max-width: auto;
+  height: 40px;
+  color: white;
+  padding: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 17px;
 }
+
 @media all and (max-width: 320px) {
-  .header1 {
-     background: #e7e7e7;
-  }
-}
-@media only screen and (min-width: 320px) and (max-width: 860px){
   .header1 {
     background: #e7e7e7;
- }
+  }
 }
-.header{
-    background-color: white;
-    max-width: auto;
-    height: 60px;
+
+@media only screen and (min-width: 320px) and (max-width: 860px) {
+  .header1 {
+    background: #e7e7e7;
+  }
 }
+
+.header {
+  background-color: white;
+  max-width: auto;
+  height: 60px;
+}
+
 @media all and (max-width: 320px) {
   .header {
-     background: #e7e7e7;
+    background: #e7e7e7;
   }
 }
-.btn1{
-  margin-left:200px;
- }
- @media all and (max-width: 320px) {
+
+.btn1 {
+  margin-left: 200px;
+}
+
+@media all and (max-width: 320px) {
   .btn1 {
-     background: #5F5F5F;
+    background: #5F5F5F;
   }
 }
-.magin{
+
+.magin {
   margin-right: 10px;
 }
 
-.btn2{
+.btn2 {
   font-size: 15px;
   height: 30px;
   width: 100px;
@@ -48,71 +55,83 @@
   background-color: #5F5F5F;
   color: white;
 }
+
 @media all and (max-width: 320px) {
   .btn2 {
-     background: #5F5F5F;
+    background: #5F5F5F;
   }
 }
-.b{
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  }
-  
-  .color{
-    color: black;
-  }
-.b{
-    border:Z solid #4CAF50;
-  }
-  
+
+.b {
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.color {
+  color: black;
+}
+
+.b {
+  border: Z solid #4CAF50;
+}
+
 .b:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
+  background-color: #4CAF50;
+  color: white;
+}
+
 .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
+  position: relative;
+  display: inline-block;
+}
+
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #4CAF50;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 10px;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-content a:hover {background-color: #ddd;}
-  
-  .dropdown:hover .dropdown-content {display: block;}
-  
-  .dropdown:hover .dropbtn {background-color: #3e8e41;}
-.border{
+  display: none;
+  position: absolute;
+  background-color: #4CAF50;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+.border {
   border-radius: 20px;
 }
-.dk{
+
+.dk {
   background-color: #f32828;
   max-width: auto;
-  height:2px;
+  height: 2px;
 }
-.header2{
-  background-color:#4CAF50;
+
+.header2 {
+  background-color: #4CAF50;
 
 }
 
@@ -123,10 +142,12 @@
   transition: 0.25s;
   border-radius: 10px;
 }
+
 .button:hover, button:focus {
   border-color: var(--hover);
   color: #fff;
 }
+
 .button {
   background: none;
   border: 2px solid;
@@ -137,15 +158,17 @@
 }
 
 .raise:hover,
-	.raise:focus {
-		box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-		-webkit-transform: translateY(-0.25em);
-		transform: translateY(-0.25em);
-  }
-  .raise {
-	--color: #ffa260;
-	--hover: #e5ff60;
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  -webkit-transform: translateY(-0.25em);
+  transform: translateY(-0.25em);
 }
+
+.raise {
+  --color: #ffa260;
+  --hover: #e5ff60;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -156,25 +179,29 @@
   position: absolute;
   background-color: #b63711;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
   z-index: 1;
+  margin-left: 20px;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
-.shadown{
-/* padding: 10px; */
+
+.shadown {
+  /* padding: 10px; */
   border: 0px;
   background-color: #b63711;
   font-size: 14px;
-  
+
 }
-.shadown:hover{
+
+.shadown:hover {
   color: #ddd;
 }
-.username{
+
+.username {
   margin-right: 50px;
   color: #0c4ee8a4;
   -webkit-transition: 0.25s;
@@ -188,12 +215,123 @@
   padding: 0.8em 2em;
 }
 
+/* ----------------------------------
+Css Profile Edit Dropdown
+Author: iModDesign
+Version: 1.0
+------------------------------------ */
 
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
+a {
+  text-decoration: none;
+}
 
+.profile-wrapper {
+  width: 200px;
+  position: relative;
+}
 
+.profile-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  border-color: #333 transparent transparent;
+  border-width: 6px;
+  border-style: solid;
+}
 
+.profile-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  border-color: #eee transparent transparent;
+  border-width: 6px;
+  border-style: solid;
+}
 
+.profile-wrapper:hover::after {
+  border-color: #9d2621 transparent transparent;
+  position: absolute;
+}
 
+.profile {
+  padding: 10px;
+  border: 1px solid #9d2621;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #9d2621 inset, 0 1px 7px rgb(189, 189, 189);
+  background: #9d2621;
+  
+}
 
+.profile:hover {
+  cursor: pointer;
+  background: -webkit-linear-gradient(#ffffff, #b6b6b6);
+  color: #9d2621;
+  /* position: absolute;
+  display: block; */
+  
+}
 
+.profile .name {
+  font-size: 12px;
+  color: #fff;
+  line-height: 26px;
+  margin-left: 10px;
+}
+
+.profile .name:hover {
+  color: #9d2621;
+}
+
+.profile img {
+  width: 25px;
+  display: inline;
+  float: left;
+  border: 1px solid #9d2621;
+  border-radius: 3px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+/* hide menu */
+.menu {
+  display: none;
+  clear: both;
+  margin: 20px 0 0 0;
+}
+
+.menu li {
+  font-size: 12px;
+  margin: 0;
+  padding: 10px 4px;
+}
+
+.menu li a {
+  color: #555;
+}
+
+.menu li:hover>a {
+  color: #9d2621;
+}
+
+.menu li:hover {
+  border-left: 1px solid #9d2621;
+  border-right: 1px solid #9d2621;
+  border-bottom: 1px solid #9d2621;
+  border-top: 1px solid #9d2621;
+  border-radius: 3px;
+}
+
+/* hover profile show menu */
+.profile:hover .menu {
+  position: absolute;
+  display: list-item;
+  width: 100px;
+  height: 200px;
+}

@@ -1,3 +1,5 @@
+import { MessageService } from './../../Services/message.service';
+import { CartService } from './../../Services/cart.service';
 import { data } from 'jquery';
 import { Product } from './../../models/product';
 import { ProductService } from './../../Services/product.service';
@@ -14,10 +16,13 @@ export class DetailProductComponent implements OnInit {
   constructor(
     private routerA: ActivatedRoute,
     private router: Router,
-    private productService: ProductService
+    private cartService: CartService,
+    private productService: ProductService,
+    private data: MessageService
   ) { }
   categoryId;
   productId;
+  cartId;
   productDetail: Product[];
   product: Product[];
   productRandom: Product[];
@@ -58,5 +63,15 @@ export class DetailProductComponent implements OnInit {
       product.splice(idx, 1);
     }
     this.productRandom = result;
+  }
+  addToCart(id: string){
+    this.cartService.addToCart(id);
+    let cartItem = JSON.parse(window.localStorage.getItem("Cart"));
+    this.cartId = window.localStorage.getItem('cartId');
+    this.cartService.updateCartApi(cartItem,this.cartId).subscribe(res =>{
+      // console.log(res)
+    });
+    this.data.changeMessage(cartItem.length);
+    // this.messageEvent.emit(cartItem.length);
   }
 }

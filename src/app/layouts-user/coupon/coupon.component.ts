@@ -45,4 +45,8 @@ export class CouponComponent implements OnInit {
   dateStringToTimestamp(date: string): number {
     return Number.parseInt(moment(date, this.datetimeformart).format('x'));
   }
+  coppyCode(code){
+    console.log(code);
+    
+  }
 }

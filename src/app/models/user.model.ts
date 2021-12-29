@@ -1,8 +1,8 @@
-import { Cart } from './cart';
+import { CartItem } from './cart-item';
 export interface User {
     address: string;
     blocked: boolean;
-    cart: {};
+    cart: CartItem;
     confirmed: boolean;
     email: string;
     fullname: string;
@@ -12,7 +12,11 @@ export interface User {
     orders: []
     phone: string;
     provider: string;
-    role: {};
+    role: {
+        id: string;
+        name: string;
+    };
+    jwt: string;
     username: string;
     _id: string;
 }

@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultStudyComponent implements OnInit {
 
+  roles = null;
+  status;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.roles = window.localStorage.getItem('roles');
+    if (!this.roles) {
+      this.status = 'null';
+    }
+    console.log(this.status)
   }
 
 }

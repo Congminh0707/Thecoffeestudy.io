@@ -10,8 +10,8 @@
                 <h3><strong>{{detail.name}}</strong></h3>
                 <P>{{detail.description}}
                 </P>
-                <p>{{detail.price}} đ</p>
-                <p><button class="btn btn-default" id="btnmuangay">MUA NGAY</button></p>
+                <p>{{detail.price | PipeMoney}} đ</p>
+                <p><button class="btn btn-default" id="btnmuangay" (click)="addToCart(detail._id)">Thêm vào giỏ hàng</button></p>
                 <p>Gọi hàng giao tận nơi 18001090</p>
             </div>
             <div class="col-md-2"></div>
@@ -35,8 +35,8 @@
                     <img [src]="p.image.url" height="300"
                         [routerLink]="['/products-detail',p._id]">
                     <p><b>{{p.name}}</b></p>
-                    <p><b>{{p.price}} đ</b></p>
-                    <p><button class="btn btn-default" id="btnmuangay">MUA NGAY</button></p>
+                    <p><b>{{p.price | PipeMoney}} đ</b></p>
+                    <p><button class="btn btn-default" id="btnmuangay" (click)="addToCart(p._id)">Thêm Vào giỏ hàng</button></p>
                 </div>
             </div>
             <div class="col-md-1"></div>

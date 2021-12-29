@@ -25,10 +25,15 @@
                     <h4>Phương thức thanh toán</h4>
                     <hr width="100px" align='left'
                         style="background-color: rgb(255, 91, 91); height: 2px; margin-top: 0;">
-                    <p></p>
+                    
                     <h4>Trạng thái thanh toán</h4>
+                    <p *ngIf="oder?.methodofpayments == 'cash'">Thanh toán khi nhận hàng</p>
+                    <p *ngIf="oder?.methodofpayments == 'MoMo'">Thanh toán bằng MoMô</p>
+                    <p *ngIf="oder?.methodofpayments == 'ZaloPay'">Thanh toán bằng Zalo Pay</p>
+                    <p *ngIf="oder?.methodofpayments == 'BankCard'">Thanh toán bằng thẻ ngân hàng</p>
                     <hr width="100px" align='left'
                         style="background-color: rgb(255, 91, 91); height: 2px; margin-top: 0;">
+                        <p>Đang chờ thanh toán</p>
                 </div>
             </div>
             <div class="row col-md-4 form-Credit-Card">
@@ -60,13 +65,21 @@
                 </div>
                 <div class="row col-md-12 total">
                     <button class=" btn-primary btn-total" disabled>Thành tiền:</button>
-                    <div class="totalMoneyCart"><strong id="totalMoneyCart">{{totalMoneyCart}} đ</strong></div>
+                    <div class="totalMoneyCart"><strong id="totalMoneyCart">{{totalMoneyCart | PipeMoney}} đ</strong></div>
                 </div>
+                <hr class="line">
+                <div class="row col-md-12 coupon-use">
+                    <div class="col-md-6 coupon-name">Giảm giá:</div>
+                    <div *ngIf="moneyDiscountRate > 0" class="col-md-6 coupon-money"><strong id="coupon-money">-
+                            {{moneyDiscountRate}} đ</strong></div>
+                </div>
+                <hr class="line">
+                <hr class="line">
                 <hr class="line">
                 <div class="row col-md-12 totalfinal">
                     <div class="col-md-6" style="padding-left: 0;">
                         <button class=" btn-primary btn-total-final" disabled>Thành tiền:
-                            <p id="totalFinal-p">{{totalMoneyCart}}</p>
+                            <p id="totalFinal-p">{{totalMoneyCart}}.000 đ</p>
                         </button>
                     </div>
                     <div class="col-md-6 check-out">

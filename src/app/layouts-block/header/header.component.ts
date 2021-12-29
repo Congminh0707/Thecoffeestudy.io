@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   username;
   roles;
   fullname;
-
+  token = window.localStorage.getItem('jwtToken')
   constructor(
     private authenService: AuthenService,
     private router: Router

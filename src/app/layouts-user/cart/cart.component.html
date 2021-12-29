@@ -36,14 +36,14 @@
             </div>
 
             <div class="col-md-2">
-                <p>{{p.price}} đ</p>
+                <p>{{p.price | PipeMoney}} đ</p>
             </div>
 
             <div class="col-md-2"><input class="qty" id="{{p._id}}" type="number" (click)="upDate(p._id, p.price)"
                     value="{{p.qty}}" min="1" /></div>
 
             <div class="col-md-2">
-                <p id="total.{{p._id}}">{{p.totalMoney}} đ</p>
+                <p id="total.{{p._id}}">{{p.totalMoney | PipeMoney}} đ</p>
             </div>
 
             <div class="col-md-2" id="actions">
@@ -63,7 +63,7 @@
 
             <div class="col-md-2">Tổng tiền:</div>
 
-            <div class="col-md-2"><strong id="totalMoneyCart">{{totalMoneyCart}} đ</strong></div>
+            <div class="col-md-2"><strong id="totalMoneyCart">{{totalMoneyCart | PipeMoney}} đ</strong></div>
 
             <div class="col-md-2">
                 <button routerLink="/Pay" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></button>

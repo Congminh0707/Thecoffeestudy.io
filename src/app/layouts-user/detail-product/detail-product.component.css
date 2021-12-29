@@ -9,6 +9,17 @@
     background-color: yellowgreen;
     color: white;
 }
+#btnAddToCart {
+    background-color: darkred;
+    color: white;
+    margin: 30px 0 0 150px;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 15px;
+}
 #comment{
     text-align: center;
     margin-top: 100px;

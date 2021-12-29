@@ -69,7 +69,7 @@ export class CartService {
       'items': item
     })
   }
-  checkOut(oderstatus: boolean, methodOfPayment: string, totalMoney: string, item: Cart[], userId: string, address: string, note: string, phone: string, fullname: string) {
+  checkOut(oderstatus: boolean, methodOfPayment: string, totalMoney: string, item: Cart[],coupon:string, userId: string, address: string, note: string, phone: string, fullname: string) {
     return this.WebRequestService.post(`oders`, {
       'oderstatus': oderstatus,
       'methodofpayments': methodOfPayment,
@@ -79,7 +79,8 @@ export class CartService {
       'address': address,
       'note': note,
       'phone': phone,
-      'fullname': fullname
+      'fullname': fullname,
+      'coupon': coupon
     })
   }
   getOder(oderId){

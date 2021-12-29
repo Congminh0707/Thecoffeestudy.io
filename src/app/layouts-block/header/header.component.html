@@ -10,17 +10,38 @@
         <div *ngIf="fullname!='undefined' && fullname!=null" class="dropdown">
             <button class="username" type="submit">{{fullname}}</button>
             <div class="dropdown-content">
-                <button class="shadown" (click)="homeUser()">Trang cá nhân</button>
-                <button class="shadown" routerLink="/coupon" >Coupon</button>
-                <button class="shadown"  (click)="logout()">Đăng Xuất</button>
+                <button class="shadown" routerLink="/Profile">Trang cá nhân</button>
+                <br>
+                <button class="shadown" routerLink="/coupon">Coupon</button>
+                <br>
+                <button class="shadown" [routerLink]="['/newpassword',token]">Đổi mật khẩu</button>
+                <br>
+                <button class="shadown" (click)="logout()">Đăng Xuất</button>
             </div>
         </div>
+        <!-- <ul class="profile-wrapper">
+			<li>
+				<div class="profile">
+					<img src="http://gravatar.com/avatar/0e1e4e5e5c11835d34c0888921e78fd4?s=80" />
+					<a routerLink="/Profile" class="name">{{fullname}}</a>
+					<ul class="menu">
+						<li><a href="#">Edit</a></li>
+						<li><a href="#">Change Password</a></li>
+						<li><a href="#">Log out</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul> -->
         <div *ngIf="fullname=='undefined'" class="dropdown">
             <button class="username" type="submit">{{username}}</button>
             <div class="dropdown-content">
-                <button class="shadown" (click)="homeUser()">Trang cá nhân</button>
-                <button class="shadown" routerLink="/coupon" >Coupon</button>
-                <button class="shadown"  (click)="logout()">Đăng Xuất</button>
+                <button class="shadown" routerLink="/Profile">Trang cá nhân</button>
+                <br>
+                <button class="shadown" routerLink="/coupon">Coupon</button>
+                <br>
+                <button class="shadown" [routerLink]="['/newpassword',token]">Đổi mật khẩu</button>
+                <br>
+                <button class="shadown" (click)="logout()">Đăng Xuất</button>
             </div>
         </div>
     </form>

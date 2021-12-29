@@ -21,7 +21,7 @@
                             <div *ngIf="i <=7 " class=" col-md-12 shadow">
                                 <img [src]="p.image.url" class="images" [routerLink]="['/products-detail',p._id]">
                                 <p class="name"><b>{{p.name}} </b></p>
-                                <p class="price"><b>{{p.price}}đ</b></p>
+                                <p class="price"><b>{{p.price | PipeMoney}} đ</b></p>
                                 <p>
                                     <button class="btn btn-default" id="btnAddToCart" (click)="addToCart(p._id)">+</button>
                                 </p>

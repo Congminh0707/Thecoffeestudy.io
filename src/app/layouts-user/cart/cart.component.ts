@@ -57,7 +57,7 @@ export class CartComponent implements OnInit {
   upDate(_id, price){
     this.qty = (<HTMLInputElement>document.getElementById(_id)).value;
     var total =  this.qty * price;
-   (<HTMLInputElement>document.getElementById('total.'+_id)).innerHTML = total.toString()+' đ';
+   (<HTMLInputElement>document.getElementById('total.'+_id)).innerHTML =  new Intl.NumberFormat().format(total).toString()+' đ';
     // console.log(this.qty)
     // console.log(_id)
     this.cartService.updateCartLocal(_id,Number.parseInt(this.qty)); 
@@ -66,10 +66,11 @@ export class CartComponent implements OnInit {
     this.cart.forEach((c :Cart) =>{
       //console.log(this.totalMoneyCart)
       var totalC = (<HTMLInputElement>document.getElementById('total.'+c.id)).innerHTML;
-      totalC = totalC.slice(0,-2)
+      totalC = totalC.slice(0,-2);
+      totalC = totalC.replace('.', '');
       this.totalMoneyCart += Number.parseInt(totalC);
     });
-    (<HTMLInputElement>document.getElementById('totalMoneyCart')).innerHTML = this.totalMoneyCart.toString()+' đ';
+    (<HTMLInputElement>document.getElementById('totalMoneyCart')).innerHTML =  new Intl.NumberFormat().format(this.totalMoneyCart).toString()+' đ';
     //location.reload();
     let cartItem = JSON.parse(window.localStorage.getItem("Cart"));
     this.cartID = window.localStorage.getItem('cartId');

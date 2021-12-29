@@ -1,3 +1,4 @@
+import { PipeMoney } from './models/pipe-money';
 import { AuthenService } from 'app/Services/authen.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -48,6 +49,12 @@ import { NavbarComponent } from './layouts-block/navbar/navbar.component';
 import { SidebarComponent } from './layouts-block/sidebar/sidebar.component';
 import { PageNotFoundComponent } from './layouts-block/page-not-found/page-not-found.component';
 import { TermsComponent } from './layouts-user/terms/terms.component';
+import { MemberProfileComponent } from './layouts-user/member-profile/member-profile.component';
+import { ClubManagerComponent } from './layouts-user/club-manager/club-manager.component';
+import { ProfileUserComponent } from './layouts-user/profile-user/profile-user.component';
+import { EventComponent } from './layouts-user/event/event.component';
+import { CalendarComponent } from './layouts-user/calendar/calendar.component';
+import { BookingComponent } from './layouts-user/booking/booking.component';
 
 @NgModule({
   imports: [
@@ -95,7 +102,13 @@ import { TermsComponent } from './layouts-user/terms/terms.component';
     TrackingComponent,
     PageNotFoundComponent,
     TermsComponent,
-
+    MemberProfileComponent,
+    ClubManagerComponent,
+    ProfileUserComponent,
+    EventComponent,
+    CalendarComponent,
+    BookingComponent,
+    PipeMoney
   ],
   providers: [
     AuthenService,

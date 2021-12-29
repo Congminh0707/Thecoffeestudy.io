@@ -23,6 +23,14 @@ import { PayComponent } from './layouts-user/pay/pay.component';
 import { RatingComponent } from './layouts-user/rating/rating.component';
 import { SignupCourseComponent } from './layouts-user/signup-course/signup-course.component';
 import { CartComponent } from './layouts-user/cart/cart.component';
+import { CalendarComponent } from './layouts-user/calendar/calendar.component';
+import { EventComponent } from './layouts-user/event/event.component';
+import { ProfileUserComponent } from './layouts-user/profile-user/profile-user.component';
+import { ClubManagerComponent } from './layouts-user/club-manager/club-manager.component';
+import { ContentClubComponent } from './layouts-user/content-club/content-club.component';
+import { MemberProfileComponent } from './layouts-user/member-profile/member-profile.component';
+import { StoreComponent } from './layouts-user/store/store.component';
+import { BookingComponent } from './layouts-user/booking/booking.component';
 
 const routes: Routes = [
   {
@@ -111,12 +119,44 @@ const routes: Routes = [
       {
         path: 'terms',
         component: TermsComponent
+      },
+      {
+        path: 'booking',
+        component: BookingComponent
+      },
+      {
+        path: 'Calendar',
+        component: CalendarComponent
+      },
+      {
+        path: 'Event',
+        component: EventComponent
+      },
+      {
+        path: 'Profile',
+        component: ProfileUserComponent
+      },
+      {
+        path: 'ClubManager',
+        component: ClubManagerComponent
+      },
+      {
+        path: 'MemberProfile',
+        component: MemberProfileComponent
+      },
+      {
+        path: 'ContentClub',
+        component: ContentClubComponent
+      },
+      {
+        path: 'Store',
+        component: StoreComponent
       }
     ],
   },
-  
+
   {
-    path: '**', 
+    path: '**',
     component: PageNotFoundComponent
   },
 ];

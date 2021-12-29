@@ -95,7 +95,7 @@
                         (click)="upDate(p._id, p.price)" value="{{p.qty}}" min="1" /></div>
 
                 <div class="col-md-2 totalMoney">
-                    <p id="total.{{p._id}}">{{p.totalMoney}} đ</p>
+                    <p id="total.{{p._id}}">{{p.totalMoney| PipeMoney}} đ</p>
                 </div>
 
                 <div class="col-md-2" id="actions">
@@ -109,12 +109,12 @@
             </div>
             <div class="row col-md-12 total">
                 <button class=" btn-primary btn-total" disabled>Thành tiền:</button>
-                <div class="totalMoneyCart"><strong id="totalMoneyCart">{{totalMoneyCart}} đ</strong></div>
+                <div class="totalMoneyCart"><strong id="totalMoneyCart">{{totalMoneyCart| PipeMoney}} đ</strong></div>
             </div>
             <hr class="line">
             <div class="row col-md-12" *ngIf="transportFee!=0">
                 <button class=" btn-primary btn-total" disabled>Phí vận chuyển:</button>
-                <div class="totalMoneyCart"><strong id="totalMoneyCart">{{transportFee}} đ</strong></div>
+                <div class="totalMoneyCart"><strong id="transportFee">{{transportFee|PipeMoney}} đ</strong></div>
             </div>
             <hr *ngIf="transportFee!=0" class="line">
             <div class="row col-md-12 promotion">
@@ -122,20 +122,20 @@
                 <div class="row col-md-12 coupon-use" *ngIf="couponUse">
                     <div class="col-md-6 coupon-name">{{couponUse.name}}</div>
                     <div *ngIf="moneyDiscountRate > 0" class="col-md-6 coupon-money"><strong id="coupon-money">-
-                            {{moneyDiscountRate}} đ</strong></div>
+                            {{moneyDiscountRate | PipeMoney}} đ</strong></div>
                 </div>
                 <input *ngIf="isCoupon && couponUse" type="button" class="btn-del-coupon" value="Xóa">
                 <div *ngIf="!isMinimum_order_value" class="row col-md-12 error">
-                    <p>Hóa đơn từ {{couponUse.minimum_condition}} đ trở lên</p>
+                    <p>Hóa đơn từ {{couponUse.minimum_condition|PipeMoney}} đ trở lên</p>
                 </div>
-                <div *ngIf="!isMinimum_number_of_drinks" class="row col-md-12 error">
+                <div *ngIf="!isMinimum_number_of_drinks" class="row col-md-12 error9">
                     <p>Hóa đơn từ {{couponUse.minimum_condition}} món trở lên</p>
                 </div>
             </div>
             <div class="row col-md-12 totalfinal">
                 <div class="col-md-6" style="padding-left: 0;">
                     <button class=" btn-primary btn-total-final" disabled>Thành tiền:
-                        <p id="totalFinal-p">{{totalMoneyCart}}</p>
+                        <p id="totalFinal-p">{{totalMoneyCart}} đ</p>
                     </button>
                 </div>
                 <div class="col-md-6 check-out">

@@ -1,0 +1,21 @@
+.carouselExampleIndicators {
+    max-width: auto;
+    height: auto;
+    background: #000000;
+}
+@media all and (max-width: 320px) {
+    .carouselExampleIndicators {
+        background: #000000;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 860px) {
+    .carouselExampleIndicators {
+        background: #000000;
+    }
+}
+.card-img-top{
+    height: 170px;
+}
+.cart{
+    max-width: 100%;
+}
